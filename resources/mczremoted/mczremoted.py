@@ -182,7 +182,6 @@ def disconnect():
     
 @sio.event
 def rispondo(response):
-    logging.info('HBI received rispondo: ' + response["stringaRicevuta"])
     pprint("Received 'rispondo' message")
     datas = response["stringaRicevuta"].split("|")
     from _data_ import RecuperoInfo

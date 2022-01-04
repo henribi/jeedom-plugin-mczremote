@@ -143,7 +143,7 @@ class mczremote extends eqLogic {
 		sleep(1);
     }
 
-	public static function sendToDaemon($params) {
+	public static function daemon_send($params) {
 		$deamon_info = self::deamon_info();
 		if ($deamon_info['state'] != 'ok') {
 			throw new Exception("Le démon n'est pas démarré");
