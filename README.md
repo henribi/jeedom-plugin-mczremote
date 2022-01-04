@@ -1,6 +1,6 @@
 # MCZ Remote
 
-Ce programme permet de commander un poêle à granulé MCZ, basé sur la technologie Maestro, en s'interfaçant avec les serveurs MCZ.
+Ce plugin pour Jeedom permet de dialoguer avec un poêle à granulé MCZ, basé sur la technologie Maestro, en s'interfaçant avec les serveurs MCZ.
 
 Une documentation plus complète est disponible dans le directory doc ou via es url
 
