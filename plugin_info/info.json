@@ -1,0 +1,24 @@
+{
+	"id" : "mczremote",
+	"name" : "MCZ Remote",
+	"description" : "Dialogue avec les poêle à pellets MCZ de la gamme Maestro via connexion remote",
+	"licence" : "AGPL",
+	"author" : "henribi",
+	"require" : "4.1",
+	"category" : "wellness",
+	"hasDependency" : true,
+	"hasOwnDeamon" : true,
+	"maxDependancyInstallTime" : 0,
+	"changelog" : "https:\/\/henribi.github.io\/jeedom-plugin-mczremote\/#language#\/changelog",
+	"documentation" : "https:\/\/henribi.github.io\/jeedom-plugin-mczremote\/#language#\/",
+	"language" : ["fr_FR"],
+		"compatibility" : [
+		"miniplus",
+		"smart",
+		"rpi",
+		"docker",
+		"diy",
+		"mobile",
+		"v4"
+	]
+}
