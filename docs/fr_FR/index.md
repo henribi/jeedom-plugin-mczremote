@@ -18,7 +18,7 @@ Ce plugin est prévu pour être installé sur le serveur Jeedom.
 
 ## La configuration en quelques clics
 
-![Configuration générale](./images/configuration.png)
+![Configuration générale](../images/configuration.png)
 
 Dans cette page de configuration, outre les informations habituelles pour un équipement, vous avez la zone de configuration pour indiquer les paramêtres de fonctionnement et de connexion.
 
@@ -94,7 +94,7 @@ Sauvergardez la configuration et allez dans le menu *Plugins*, *Gestion des plug
 
 Sélectionnez le **+** pour ajouter un plugin.
 
-![Installation plugin](./images/depot_github.png)
+![Installation plugin](../images/depot_github.png)
 
 Commencez par choisir *Github* dans le *Type de source*.
 
