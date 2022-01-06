@@ -122,18 +122,11 @@ def on_connect_mqtt(client, userdata, flags, rc):
 def on_message_mqtt(client, userdata, message):
     logging.info('Message MQTT reçu : ' + str(message.payload.decode()))
     cmd = message.payload.decode().split(",")
-    if (int(cmd[0])) < 9000:
-        if cmd[0] == "42":
-            cmd[1] = (int(cmd[1]))
-        Message_MQTT.empile("C|WriteParametri|" + cmd[0] + "|" + str(cmd[1]))
-        logging.info('Contenu Pile Message_MQTT : ' + str(Message_MQTT.copiepile()))
-        send()
-    else:
-        if cmd[0] == "9001":
-            order = "C|SalvaDataOra|"
-        Message_MQTT.empile(str(order) + str(cmd[1]))
-        logging.info('Contenu Pile Message_MQTT : ' + str(Message_MQTT.copiepile()))
-        send()
+    if cmd[0] == "42":
+        cmd[1] = (int(cmd[1]))
+    Message_MQTT.empile("C|WriteParametri|" + cmd[0] + "|" + str(cmd[1]))
+    logging.info('Contenu Pile Message_MQTT : ' + str(Message_MQTT.copiepile()))
+    send()
     
     
     
