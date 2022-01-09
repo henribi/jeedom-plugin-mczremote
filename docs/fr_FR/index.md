@@ -6,8 +6,13 @@ Ce plugin est prévu pour être installé sur le serveur Jeedom.
 
 > **Prérequis**
 >
->Votre poêle doit être connecté au wifi de votre domicile. Il doit pouvoir être contrôlé par l'application MCZ Maestro à partir de votre smartphone.
+>Votre poêle doit être connecté au wifi de votre domicile. Il doit pouvoir être contrôlé par l'application MCZ Maestro à partir de votre smartphone en 4G ou hors de votre domicile.
 >
+>> ***Attention***
+>>
+>> Ce plugin n'est pas compatible avec les poêle qui utilisent l'app Maestro MCZ et le protocole Maestro+
+>>
+>>
 
 > **MQTT**
 >
