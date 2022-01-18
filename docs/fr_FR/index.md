@@ -118,6 +118,8 @@ Sauvegardez et allez dans un autre menu.
 
 Revenez dans le menu *Gestion des plugins*.  Le plugin MCZ Remote est maintenant visible.
 
+Il vous reste à installer les dépendances, à fournir les paramêtres de configuration et à lancer le démon.
+
 
 # Remerciements
 

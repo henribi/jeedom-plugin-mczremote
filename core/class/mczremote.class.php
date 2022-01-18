@@ -40,6 +40,12 @@ class mczremote extends eqLogic {
 		if (exec(system::getCmdSudo() . 'pip3 list | grep -E "pyudev|requests" | wc -l') < 2) {
 			$return['state'] = 'nok';
 		}
+		if (exec(system::getCmdSudo() . 'pip3 list | grep -E "python-socketio[ ]*4.6.1" | wc -l') < 1) {
+			$return['state'] = 'nok';
+		}
+		if (exec(system::getCmdSudo() . 'pip3 list | grep -E "python-engineio[ ]*3.14.2" | wc -l') < 1) {
+			$return['state'] = 'nok';
+		}
 		return $return;
     }
 
@@ -80,6 +86,14 @@ class mczremote extends eqLogic {
 		} elseif ($devmac == '') {
 			$return['launchable'] = 'nok';
 			$return['launchable_message'] = __('L\'information Device Serial n\'est pas configurée', __FILE__);
+		}
+		if (exec(system::getCmdSudo() . 'pip3 list | grep -E "python-socketio[ ]*4.6.1" | wc -l') < 1) {
+			$return['launchable'] = 'nok';
+			$return['launchable_message'] = __('Relancer la mise à jour des dépendances', __FILE__);
+		}
+		if (exec(system::getCmdSudo() . 'pip3 list | grep -E "python-engineio[ ]*3.14.2" | wc -l') < 1) {
+			$return['launchable'] = 'nok';
+			$return['launchable_message'] = __('Relancer la mise à jour des dépendances', __FILE__);
 		}
 
 		return $return;
