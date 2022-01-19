@@ -138,8 +138,8 @@ def secTOdhms(nb_sec):
 
 @sio.event
 def connect():
-    pprint("Connected")
-    pprint("SID is : {}".format(sio.sid))
+    logging.info("Connected")
+    logging.info("SID is : {}".format(sio.sid))
     sio.emit(
         "join",
         {
@@ -170,12 +170,12 @@ def connect():
 
 @sio.event
 def disconnect():
-    pprint("Disconnected")
+    logging.info("Disconnected")
     
     
 @sio.event
 def rispondo(response):
-    pprint("Received 'rispondo' message")
+    logging.info("Received 'rispondo' message")
     datas = response["stringaRicevuta"].split("|")
     from _data_ import RecuperoInfo
     for i in range(0, len(datas)):
