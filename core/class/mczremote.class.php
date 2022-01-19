@@ -23,6 +23,7 @@ require_once __DIR__  . '/../../../../core/php/core.inc.php';
 
 class mczremote extends eqLogic {
     /*     * *************************Attributs****************************** */
+    public static $_encryptConfigKey = array('MQTTuser', 'MQTTpwd', 'DevSerial', 'DevMac');
 
 
 
@@ -40,10 +41,7 @@ class mczremote extends eqLogic {
 		if (exec(system::getCmdSudo() . 'pip3 list | grep -E "pyudev|requests" | wc -l') < 2) {
 			$return['state'] = 'nok';
 		}
-		if (exec(system::getCmdSudo() . 'pip3 list | grep -E "python-socketio[ ]*4.6.1" | wc -l') < 1) {
-			$return['state'] = 'nok';
-		}
-		if (exec(system::getCmdSudo() . 'pip3 list | grep -E "python-engineio[ ]*3.14.2" | wc -l') < 1) {
+		if (exec(system::getCmdSudo() . 'pip3 list | grep -E "python-socketio[ ]*4.6.1|python-engineio[ ]*3.14.2" | wc -l') < 2) {
 			$return['state'] = 'nok';
 		}
 		return $return;
@@ -87,11 +85,7 @@ class mczremote extends eqLogic {
 			$return['launchable'] = 'nok';
 			$return['launchable_message'] = __('L\'information Device Serial n\'est pas configurée', __FILE__);
 		}
-		if (exec(system::getCmdSudo() . 'pip3 list | grep -E "python-socketio[ ]*4.6.1" | wc -l') < 1) {
-			$return['launchable'] = 'nok';
-			$return['launchable_message'] = __('Relancer la mise à jour des dépendances', __FILE__);
-		}
-		if (exec(system::getCmdSudo() . 'pip3 list | grep -E "python-engineio[ ]*3.14.2" | wc -l') < 1) {
+		if (exec(system::getCmdSudo() . 'pip3 list | grep -E "python-socketio[ ]*4.6.1|python-engineio[ ]*3.14.2" | wc -l') < 2) {
 			$return['launchable'] = 'nok';
 			$return['launchable_message'] = __('Relancer la mise à jour des dépendances', __FILE__);
 		}
@@ -105,8 +99,6 @@ class mczremote extends eqLogic {
 		if ($deamon_info['launchable'] != 'ok') {
 			throw new Exception(__('Veuillez vérifier la configuration', __FILE__));
         }
-
-        //$port = config::byKey('port', 'mczremote');
 
 		$mczremote_path = realpath(dirname(__FILE__) . '/../../resources/mczremoted');
 		log::add('mczremote', 'debug', 'path:' . $mczremote_path);
@@ -127,7 +119,7 @@ class mczremote extends eqLogic {
 		$cmd .= ' --callback ' . network::getNetworkAccess('internal', 'proto:127.0.0.1:port:comp') . '/plugins/mczremote/core/php/jeeMCZRemote.php';
 		$cmd .= ' --apikey ' . jeedom::getApiKey(__CLASS__);
 		$cmd .= ' --pidfile ' . jeedom::getTmpFolder(__CLASS__) . '/deamon.pid';
-		log::add('mczremote', 'info', 'Lancement démon MCZremote : ' . $cmd);
+		//log::add('mczremote', 'debug', 'Lancement démon MCZremote : ' . $cmd);
 		$result = exec($cmd . ' >> ' . log::getPathToLog(__CLASS__) . ' 2>&1 &');
 		$i = 0;
 		while ($i < 30) {

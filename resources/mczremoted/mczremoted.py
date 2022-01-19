@@ -279,6 +279,16 @@ def shutdown():
         os._exit(0)
 
 # ----------------------------------------------------------------------------
+def maskinfo(info):
+        if len(info) > 5:
+            debut = info[:2]
+            fin = info[-2:]
+            result = debut + "***" + fin
+        else:
+            result = "***"
+        return result
+
+# ----------------------------------------------------------------------------
 parser = argparse.ArgumentParser(description='MCZ Remote Daemon for Jeedom plugin')
 parser.add_argument("--mqttip", help="MQTT IP server", type=str)
 parser.add_argument("--mqttport", help="Port MQTT", type=int)
@@ -339,12 +349,12 @@ logging.info('Socket host: '+str(globals.sockethost))
 logging.info('MQTT IP: '+str(globals.MQTT_ip))
 logging.info('MQTT port: '+str(globals.MQTT_port))
 logging.info('MQTT Authentication: '+str(globals.MQTT_authentication))
-logging.info('MQTT User: '+str(globals.MQTT_user))
-logging.info('MQTT Password: '+str(globals.MQTT_pass))
+logging.info('MQTT User: '+ maskinfo(str(globals.MQTT_user)) )
+logging.info('MQTT Password: '+ maskinfo(str(globals.MQTT_pass)) )
 logging.info('MQTT Topic PUB: '+str(globals.MQTT_TOPIC_PUB))
 logging.info('MQTT Topic SUB: '+str(globals.MQTT_TOPIC_SUB))
-logging.info('MCZ Device Serial: '+str(globals.MCZ_device_serial))
-logging.info('MCZ Device MAC: '+str(globals.MCZ_device_MAC))
+logging.info('MCZ Device Serial: '+ maskinfo(str(globals.MCZ_device_serial)) )
+logging.info('MCZ Device MAC: '+ maskinfo(str(globals.MCZ_device_MAC)) )
 logging.info('MCZ Url: '+str(globals.MCZ_App_URL))
 logging.info('PID file: '+str(globals.pidfile))
 logging.info('Apikey: '+str(globals.apikey))
