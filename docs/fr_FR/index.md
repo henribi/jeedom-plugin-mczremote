@@ -84,7 +84,7 @@ Un message éventuel dans cette zone indique un problème à corriger.
 
 # Installation
 
-Ce plugin n'est pas distribué via le market Jeedom.
+Ce plugin n'est actuellement pas distribué via le market Jeedom. La demande est en cours.
 
 Il faut l'installer à partir d'un dépôt Github.
 
