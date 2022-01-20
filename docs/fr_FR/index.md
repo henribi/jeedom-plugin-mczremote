@@ -10,7 +10,7 @@ Ce plugin est prévu pour être installé sur le serveur Jeedom.
 >
 >> ***Attention***
 >>
->> Ce plugin n'est pas compatible avec les poêles qui utilisent l'app Maestro MCZ et le protocole Maestro+
+>> Ce plugin n'est pas compatible avec les poêles qui utilisent l'application Maestro MCZ et le protocole Maestro+.
 >>
 >>
 
@@ -118,7 +118,7 @@ Sauvegardez et allez dans un autre menu.
 
 Revenez dans le menu *Gestion des plugins*.  Le plugin MCZ Remote est maintenant visible.
 
-Il vous reste à installer les dépendances, à fournir les paramètres de configuration et à lancer le démon.
+Il vous reste à installer les dépendances, à fournir les paramètres de configuration et à lancer le démon. 
 
 
 # Remerciements
