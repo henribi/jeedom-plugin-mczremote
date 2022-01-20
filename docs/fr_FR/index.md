@@ -10,7 +10,7 @@ Ce plugin est prévu pour être installé sur le serveur Jeedom.
 >
 >> ***Attention***
 >>
->> Ce plugin n'est pas compatible avec les poêle qui utilisent l'app Maestro MCZ et le protocole Maestro+
+>> Ce plugin n'est pas compatible avec les poêles qui utilisent l'app Maestro MCZ et le protocole Maestro+
 >>
 >>
 
@@ -25,7 +25,7 @@ Ce plugin est prévu pour être installé sur le serveur Jeedom.
 
 ![Configuration générale](../images/configuration.png)
 
-Dans cette page de configuration, outre les informations habituelles pour un équipement, vous avez la zone de configuration pour indiquer les paramêtres de fonctionnement et de connexion.
+Dans cette page de configuration, outre les informations habituelles pour un équipement, vous avez la zone de configuration pour indiquer les paramètres de fonctionnement et de connexion.
 
 ### MCZ Maestro
 
@@ -73,7 +73,7 @@ C'est le port de dialogue entre le démon et Jeedom. Ce port doit être adapté 
 
 ## Installation des dépendances
 
-Cette opération va installer sur votre Jeedom les modules python nécessaire au fonctionnement du démon.
+Cette opération va installer sur votre Jeedom les modules python nécessaires au fonctionnement du démon.
 
 ## Démon
 
@@ -93,7 +93,7 @@ Il faut l'installer à partir d'un dépôt Github.
 >Il n’y a pas d’assistance de l’équipe Jeedom sur les plugins installés depuis une autre source que le Market Jeedom.De plus, l’installation d’un plugin depuis une autre source que le Market Jeedom entraine la perte globale d’assistance par l’équipe Jeedom.
 >
 
-Cela nécessite un configuration.  Via Les menus *Réglages*, *Systèmes*, *Configuration* suivi de l'onglet *Mises à jour/Market*, dans la zone *Configuration des dépôts*, sélectionner *Github*.  A ce niveau, il faut valider **Activer Github**
+Cela nécessite une configuration.  Via Les menus *Réglages*, *Systèmes*, *Configuration* suivi de l'onglet *Mises à jour/Market*, dans la zone *Configuration des dépôts*, sélectionner *Github*.  A ce niveau, il faut valider **Activer Github**
 
 Sauvergardez la configuration et allez dans le menu *Plugins*, *Gestion des plugins*
 
@@ -118,7 +118,7 @@ Sauvegardez et allez dans un autre menu.
 
 Revenez dans le menu *Gestion des plugins*.  Le plugin MCZ Remote est maintenant visible.
 
-Il vous reste à installer les dépendances, à fournir les paramêtres de configuration et à lancer le démon.
+Il vous reste à installer les dépendances, à fournir les paramètres de configuration et à lancer le démon.
 
 
 # Remerciements
