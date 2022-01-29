@@ -81,46 +81,6 @@ Dans cette zone, vous pouvez agir sur le démon.
 
 Un message éventuel dans cette zone indique un problème à corriger.
 
-
-# Installation
-
-Ce plugin n'est actuellement pas distribué via le market Jeedom. La demande est en cours.
-
-Il faut l'installer à partir d'un dépôt Github.
-
-> **Attention**
->
->Il n’y a pas d’assistance de l’équipe Jeedom sur les plugins installés depuis une autre source que le Market Jeedom.De plus, l’installation d’un plugin depuis une autre source que le Market Jeedom entraine la perte globale d’assistance par l’équipe Jeedom.
->
-
-Cela nécessite une configuration.  Via Les menus *Réglages*, *Systèmes*, *Configuration* suivi de l'onglet *Mises à jour/Market*, dans la zone *Configuration des dépôts*, sélectionner *Github*.  A ce niveau, il faut valider **Activer Github**
-
-Sauvergardez la configuration et allez dans le menu *Plugins*, *Gestion des plugins*
-
-Sélectionnez le **+** pour ajouter un plugin.
-
-![Installation plugin](../images/depot_github.png)
-
-Commencez par choisir *Github* dans le *Type de source*.
-
-Les champs de configuration du dépôt Github sont alors visibles.
-
-Entrez les informations suivantes pour les différents champs.
-
-| | |
-|---|---|
-|ID logique du plugin|mczremote|
-|Utilisateur ou ...|henribi|
-|Nom du dépôt|jeedom-plugin-mczremote|
-|Branche|master|
-
-Sauvegardez et allez dans un autre menu.
-
-Revenez dans le menu *Gestion des plugins*.  Le plugin MCZ Remote est maintenant visible.
-
-Il vous reste à installer les dépendances, à fournir les paramètres de configuration et à lancer le démon. 
-
-
 # Remerciements
 
 Ce plugin est largement inspiré des travaux de Anthony, EtienneME et Pipolas sur le forum suivant: <https://community.jeedom.com/t/mcz-maestro-et-jeedom/6159/183> 
