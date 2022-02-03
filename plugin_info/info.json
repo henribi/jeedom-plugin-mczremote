@@ -13,12 +13,10 @@
 	"documentation" : "https:\/\/henribi.github.io\/jeedom-plugin-mczremote\/#language#\/",
 	"language" : ["fr_FR"],
 		"compatibility" : [
-		"miniplus",
 		"smart",
 		"rpi",
 		"docker",
 		"diy",
-		"mobile",
 		"v4"
 	]
 }
