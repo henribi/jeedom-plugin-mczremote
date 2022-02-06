@@ -2,6 +2,8 @@
 
 Ce plugin permet de dialoguer avec un poêle à pellets de la gamme MCZ Maestro via les serveurs de MCZ.
 
+Les informations et actions sont présentées ou transmises via MQTT.
+
 Ce plugin est prévu pour être installé sur le serveur Jeedom.
 
 > **Prérequis**
@@ -16,7 +18,7 @@ Ce plugin est prévu pour être installé sur le serveur Jeedom.
 
 > **MQTT**
 >
-> Vous devez disposer ou avoir préalablement installé un serveur MQTT. Généralement mosquitto.  Il peut être installé via le plugin ***JMQTT***
+> Vous devez disposer ou avoir préalablement installé un serveur MQTT. Généralement mosquitto.  Il peut être installé via le plugin ***jMQTT***
 >
 
 # Configuration
@@ -31,44 +33,30 @@ Dans cette page de configuration, outre les informations habituelles pour un éq
 
 Cette zone permet l'introduction des informations pour votre poêle.
 
-#### Device serial
+- Device serial:  Vous devez indiquer dans cette zone l'information *Device serial* de votre poêle
 
-Vous devez indiquer dans cette zone l'information *Device serial* de votre poêle
+- Device MAC:   Vous devez indiquer dans cette zone l'information *Device MAC* de votre poêle
 
-#### Device MAC
-
-Vous devez indiquer dans cette zone l'information *Device MAC* de votre poêle
-
-#### URL des serveurs MCZ
-
-Cette information est préremplie avec l'URL des serveurs MCZ.
+- URL des serveurs MCZ:   Cette information est préremplie avec l'URL des serveurs MCZ.
 
 ### MQTT
 
-#### IP du serveur
+- IP du serveur:  Vous devez spécifier ici l'adresse IP du serveur MQTT.  Ce serveur peut être local sur votre Jeedom. L'adresse IP est alors 127.0.0.1
 
-Vous devez spécifier ici l'adresse IP du serveur MQTT.  Ce serveur peut être local sur votre Jeedom. L'adresse IP est alors 127.0.0.1
+- Port du serveur:  Généralement, le port est 1883 sauf si la configuration du serveur MQTT a été modifiée.
 
-#### Port du serveur
+- Utilisateur et Mot de passe:  Ces informations sont optionnelles. Il faut les indiquer si votre serveur MQTT nécessite un utilisateur et mot de passe pour se connecter.
 
-Généralement, le port est 1883 sauf si la configuration du serveur MQTT a été modifiée.
+- Topic PUB:   Cette information est préremplie avec le topic de publication sur le serveur MQTT.
 
-#### Utilisateur et Mot de passe
+- Topic SUB:   Cette information est préremplie avec le topic de publication sur le serveur MQTT.
 
-Ces informations sont optionnelles. Il faut les indiquer si votre serveur MQTT nécessite un utilisateur et mot de passe pour se connecter.
-
-#### Topic PUB
-
-Cette information est préremplie avec le topic de publication sur le serveur MQTT.
-
-#### Topic SUB
-
-Cette information est préremplie avec le topic de publication sur le serveur MQTT.
+- Installer template dans jMQTT:  Permet de copier un template pour les poêles MCZ en Remote dans jMQTT. Le template est présenté comme *(Perso)MCZRemote*. Il faut alors l'activer dans jMQTT.
 
 
-#### Port socket interne
+### Démon
 
-C'est le port de dialogue entre le démon et Jeedom. Ce port doit être adapté si vous avez un conflit de port sur votre installation.
+- Port socket interne  C'est le port de dialogue entre le démon et Jeedom. Ce port doit être adapté si vous avez un conflit de port sur votre installation.
 
 
 ## Installation des dépendances
@@ -87,7 +75,7 @@ Ce plugin est largement inspiré des travaux de Anthony, EtienneME et Pipolas su
 
 Git original: <https://github.com/Anthony-55/maestro>  
 
-Ce plugin a été créé pour aider, je ne souhaite en aucun cas m'approprier ce code qui n'est pas le mien, et sans lequel ce plugin n'existerait pas.
+Ce plugin a été créé pour aider, je ne souhaite en aucun cas m'approprier le code du script python qui n'est pas le mien, et sans lequel ce plugin n'existerait pas.
 
 
 

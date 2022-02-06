@@ -52,6 +52,46 @@ class mczremote extends eqLogic {
 		return array('script' => dirname(__FILE__) . '/../../resources/install_#stype#.sh ' . jeedom::getTmpFolder('mczremote') . '/dependency', 'log' => log::getPathToLog(__CLASS__ . '_update'));
 	}
 
+	public static function installTemplate() {
+		$found = 0;
+		$pluginList = plugin::listPlugin($_activateOnly = true, $_orderByCategory = false, $_translate = true, $_nameOnly = true);
+		if (is_array($pluginList)) {
+			foreach ($pluginList as $val) {
+				if ($val == 'jMQTT'){
+					$pathPlugin = plugin::getPluginPath($val);
+					$found = 1;
+					break;
+				}
+				//log::add('mczremote', 'debug', 'plugin: ' . $val);
+			}
+		}
+		if ($found) {
+			//log::add('mczremote', 'debug', 'jMQTT found  and path: ' . $pathPlugin);
+			$jMQTTPathTemplate = $pathPlugin . '/data/template' . '/MCZRemote.json';
+			$MCZRemotePathTemplate = plugin::getPluginPath('mczremote') . '/data/template' . '/MCZRemote.json';
+			//log::add('mczremote', 'debug', 'Path dest: ' . $jMQTTPathTemplate . '    Path source: ' . $MCZRemotePathTemplate);
+			if (file_exists( $MCZRemotePathTemplate)) {
+				$result = copy($MCZRemotePathTemplate, $jMQTTPathTemplate );
+				if ($result) {
+					log::add('mczremote', 'debug', 'Installation du template dans jMQTT  OK');
+				} else {
+					log::add('mczremote', 'warning', 'Installation du template dans jMQTT  NOK');
+				}
+				/***
+				shell_exec(system::getCmdSudo() . ' cp '. $MCZRemotePathTemplate . $filename . '  ' . $jMQTTPathTemplate);
+				shell_exec(system::getCmdSudo() . 'chown ' . system::get('www-uid') . ':' . system::get('www-gid') . ' ' . $jMQTTPathTemplate . $filename );
+
+				if (file_exists( $jMQTTPathTemplate  .'/MCZRemote.json')) {
+					log::add('mczremote', 'debug', 'Copie du template OK');
+				} else {
+					log::add('mczremote', 'warning', 'Copie du template NOK');
+				}
+				***/
+			}
+		} 
+
+	}
+
 	public static function deamon_info() {
 		$return = array();
 		$return['log'] = __CLASS__;
@@ -202,23 +242,7 @@ class mczremote extends eqLogic {
     }
 
     public function postSave() {
-		log::add('mcztherm','debug','Exécution de la fonction postSave');
-		//Création des commandes
-		$order = 0;
-		$refresh = $this->getCmd(null, 'refresh');
-		if (!is_object($refresh)) {
-			$refresh = new mczthermCmd();
-			$refresh->setLogicalId('refresh');
-			$refresh->setName(__('Rafraichir', __FILE__));
-		}
-		$refresh->setOrder($order++);
-		$refresh->setEqLogic_id($this->getId());
-		$refresh->setType('action');
-		$refresh->setSubType('other');
-		$refresh->save();
-
-
-    
+		log::add('mczremote','debug','Exécution de la fonction postSave');
     }
 
     public function preUpdate() {
