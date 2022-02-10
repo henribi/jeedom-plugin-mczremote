@@ -1,3 +1,4 @@
+
 <?php
 
 /* This file is part of Jeedom.
@@ -146,9 +147,11 @@ class mczremote extends eqLogic {
 		$cmd .= ' --loglevel ' . log::convertLogLevel(log::getLogLevel('mczremote'));
 		$cmd .= ' --mqttip ' . config::byKey('MQTTip', __CLASS__);
 		$cmd .= ' --mqttport ' . config::byKey('MQTTport', __CLASS__);
-		$cmd .= ' --mqttauth ' . config::byKey('MQTTauth', __CLASS__);
-		$cmd .= ' --mqttuser ' . config::byKey('MQTTuser', __CLASS__);
-		$cmd .= ' --mqttpwd ' . config::byKey('MQTTpwd', __CLASS__);
+		if (config::byKey('MQTTauth', __CLASS__) == 1 ) {
+			$cmd .= ' --mqttauth ' . config::byKey('MQTTauth', __CLASS__);
+			$cmd .= ' --mqttuser ' . config::byKey('MQTTuser', __CLASS__);
+			$cmd .= ' --mqttpwd ' . config::byKey('MQTTpwd', __CLASS__);
+		}
 		$cmd .= ' --topicpub ' . config::byKey('TopicPub', __CLASS__);
 		$cmd .= ' --topicsub ' . config::byKey('TopicSub', __CLASS__);
 		$cmd .= ' --devserial ' . config::byKey('DevSerial', __CLASS__);
@@ -159,7 +162,7 @@ class mczremote extends eqLogic {
 		$cmd .= ' --callback ' . network::getNetworkAccess('internal', 'proto:127.0.0.1:port:comp') . '/plugins/mczremote/core/php/jeeMCZRemote.php';
 		$cmd .= ' --apikey ' . jeedom::getApiKey(__CLASS__);
 		$cmd .= ' --pidfile ' . jeedom::getTmpFolder(__CLASS__) . '/deamon.pid';
-		//log::add('mczremote', 'debug', 'Lancement démon MCZremote : ' . $cmd);
+		log::add('mczremote', 'debug', 'Lancement démon MCZremote : ' . $cmd);
 		$result = exec($cmd . ' >> ' . log::getPathToLog(__CLASS__) . ' 2>&1 &');
 		$i = 0;
 		while ($i < 30) {
