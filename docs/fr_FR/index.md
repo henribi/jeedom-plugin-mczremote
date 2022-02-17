@@ -21,7 +21,7 @@ Ce plugin est prévu pour être installé sur le serveur Jeedom.
 > Vous devez disposer ou avoir préalablement installé un serveur MQTT. Généralement mosquitto.  Il peut être installé via le plugin ***jMQTT***
 >
 
-# Configuration
+# CONFIGURATION
 
 ## La configuration en quelques clics
 
@@ -69,7 +69,104 @@ Dans cette zone, vous pouvez agir sur le démon.
 
 Un message éventuel dans cette zone indique un problème à corriger.
 
-# Remerciements
+# COMMANDES DU POELE
+
+Ce sont les commandes qu'il faut envoyer au poele pour le controler.
+Cette liste n'est pas exhaustive. Il y a plus d'informations dans le forum à l'url :
+https://community.jeedom.com/t/mcz-maestro-et-jeedom/6159/183
+
+
+Allumer/Eteindre
+  - Allumer:  34,1  
+  - Éteindre: 34,40  
+
+Passage Mode Eté/Hiver :
+  - Eté     : 58,1
+  - Hiver   : 58,0
+
+Mode ACTIVE :
+  - Activé      : 35,1
+  - Désactivé   : 35,0
+  - Reset du mode ACTIVE : 2,255 
+
+Sons du poêle : 
+  - Activé:     50,1
+  - Desactiver: 50,0
+
+Mode ECO 
+  - Activer:    41,1
+  - Désactiver: 41,0
+
+Désactiver le thermostat interne (c’est par exemple jeedom qui régulera les on et off) : 40,0
+
+Régulation de température sur sonde (sonde interne) : 40,1
+
+Puissance
+  - Niveau 1 : 36,1
+  - Niveau 2 : 36,2
+  - Niveau 3 : 36,3
+  - Niveau 4 : 36,4
+  - Niveau 5 : 36,5   (Power 110%)
+
+ChronoThermostato
+  - ON : 1111,1
+  - OFF : 1111,0
+
+Modifier température consigne mode Chrono :
+  - T1 : 1108,xx ou xx est la consigne demandée (nombre entier compris entre 5 et 35)
+  - T2 : 1109,xx
+  - T3 : 1110,xx
+
+
+Ventilateur ambiance
+  - Niveau 1  : 37,1
+  - Niveau 2  : 37,2
+  - Niveau 3  : 37,3
+  - Niveau 4  : 37,4
+  - Niveau 5  : 37,5
+  - Automatique : 37,6
+    
+Ventilateur canalisé 1
+  - Niveau 1  : 38,1
+  - Niveau 2  : 38,2
+  - Niveau 3  : 38,3
+  - Niveau 4  : 38,4
+  - Niveau 5  : 38,5
+  - Automatique : 38,6
+    
+Ventilateur canalisé 2
+  - Niveau 1  : 39,1
+  - Niveau 2  : 39,2
+  - Niveau 3  : 39,3
+  - Niveau 4  : 39,4    
+  - Niveau 5  : 39,5
+  - Automatique : 39,6
+
+Profil
+  - Manuel    : 149,0
+  - Dynamic   : 149,1
+  - Overnight : 149,2
+  - Confort   : 149,3
+  - Power     : 149.4
+  - Manuel Adaptatif    : 149,10
+  - Dynamic Adaptatif   : 149,11
+  - Overnight Adaptatif : 149,12
+  - Confort Adaptatif   : 149,13
+  - Power Adaptatif     : 149.14
+
+>  **Remarque**:
+>  Les modes adaptatif sont reconnus comme "code inconnu".
+>
+
+Consigne de température    
+  42,xx  avec xx le double de la température pour supporter les demi degré  
+
+Mise à jour de la date et heure du poêle. (nécessite cette version du script)  
+  9001,DDMMYYYYHHmm  
+  exemple:  9001,011120212010      pour 01/11/2021 20h10
+
+
+# REMERCIEMENTS
 
 Ce plugin est largement inspiré des travaux de Anthony, EtienneME et Pipolas sur le forum suivant: <https://community.jeedom.com/t/mcz-maestro-et-jeedom/6159/183> 
 

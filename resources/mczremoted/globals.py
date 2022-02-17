@@ -1,5 +1,5 @@
 import time
-DAEMON_VERSION = '0.1'
+DAEMON_VERSION = '0.2'
 JEEDOM_COM = ''
 START_TIME = int(time.time())
 log_level = 'error'
@@ -8,6 +8,7 @@ sockethost= '127.0.0.1'
 callback = ''
 apikey = ''
 pidfile = ''
+log_file = '/var/www/html/log/mczremote'
 
 MQTT_ip='127.0.0.1'            #Adresse IP du broker mqtt
 MQTT_port=1883                     #Port du broker mqtt
