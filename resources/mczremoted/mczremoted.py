@@ -29,7 +29,7 @@ import signal
 import json
 import traceback
 import paho.mqtt.client as mqtt
-from logging.handlers import RotatingFileHandler, TimedRotatingFileHandler, WatchedFileHandler
+#from logging.handlers import RotatingFileHandler, TimedRotatingFileHandler, WatchedFileHandler
 import websocket
 
 from pprint import pprint
@@ -100,7 +100,7 @@ def send():
         if Message_MQTT.pilevide():
             Message_MQTT.empile("C|RecuperoInfo")
         cmd = Message_MQTT.depile()
-        logger.info("Envoi de la commande : " + str(cmd))
+        logging.info("Envoi de la commande : " + str(cmd))
         sio.emit(
             "chiedo",
             {
@@ -115,23 +115,23 @@ def send():
 
 
 def on_connect_mqtt(client, userdata, flags, rc):
-    logger.info("Connecté au broker MQTT avec le code : " + str(rc))
+    logging.info("Connecté au broker MQTT avec le code : " + str(rc))
 
 
 def on_message_mqtt(client, userdata, message):
-    logger.info('Message MQTT reçu : ' + str(message.payload.decode()))
+    logging.info('Message MQTT reçu : ' + str(message.payload.decode()))
     cmd = message.payload.decode().split(",")
     if (int(cmd[0])) < 9000:
         if cmd[0] == "42":
             cmd[1] = (int(cmd[1]))
         Message_MQTT.empile("C|WriteParametri|" + cmd[0] + "|" + str(cmd[1]))
-        logger.info('Contenu Pile Message_MQTT : ' + str(Message_MQTT.copiepile()))
+        logging.info('Contenu Pile Message_MQTT : ' + str(Message_MQTT.copiepile()))
         send()
     else:
         if cmd[0] == "9001":
             order = "C|SalvaDataOra|"
         Message_MQTT.empile(str(order) + str(cmd[1]))
-        logger.info('Contenu Pile Message_MQTT : ' + str(Message_MQTT.copiepile()))
+        logging.info('Contenu Pile Message_MQTT : ' + str(Message_MQTT.copiepile()))
         send()
     
     
@@ -144,8 +144,8 @@ def secTOdhms(nb_sec):
 
 @sio.event
 def connect():
-    logger.info("Connected")
-    logger.debug("SID is : {}".format(sio.sid))
+    logging.info("Connected")
+    logging.debug("SID is : {}".format(sio.sid))
     sio.emit(
         "join",
         {
@@ -176,12 +176,12 @@ def connect():
 
 @sio.event
 def disconnect():
-    logger.info("Disconnected")
+    logging.info("Disconnected")
     
     
 @sio.event
 def rispondo(response):
-    logger.debug("Received 'rispondo' message")
+    #logging.debug("Received 'rispondo' message")
     datas = response["stringaRicevuta"].split("|")
     from _data_ import RecuperoInfo
     for i in range(0, len(datas)):
@@ -203,13 +203,13 @@ def rispondo(response):
                         MQTT_MAESTRO[RecuperoInfo[j][1]] = secTOdhms(int(datas[i], 16))
                     else:
                         MQTT_MAESTRO[RecuperoInfo[j][1]] = int(datas[i], 16)
-    logger.info('Publication sur MQTT ' + str(globals.MQTT_TOPIC_PUB) + ' du message : ' + str(json.dumps(MQTT_MAESTRO)))
+    logging.info('Publication sur MQTT ' + str(globals.MQTT_TOPIC_PUB) + ': ' + str(json.dumps(MQTT_MAESTRO)))
     client.publish(globals.MQTT_TOPIC_PUB, json.dumps(MQTT_MAESTRO), 1)
     
 def receiveMcz(*args):
     while True:
         time.sleep(30)
-        logger.debug("Envoi de la commande pour rafraichir les donnees")
+        #logging.debug("Envoi de la commande pour rafraichir les donnees")
         sio.emit(
             "chiedo",
             {
@@ -226,52 +226,52 @@ def receiveMcz(*args):
 def listen():
     try:
         jeedom_socket.open()
-        logger.info("Start listening on: [" + str(globals.sockethost) + ":" + str(globals.socketport) + "]" )
+        logging.info("Start listening on: [" + str(globals.sockethost) + ":" + str(globals.socketport) + "]" )
         threading.Thread( target=read_socket, args=('socket',)).start()
-        logger.debug("Read socket thread launched on: [" + str(globals.sockethost) + ":" + str(globals.socketport) + "]" )
+        logging.debug("Read socket thread launched on: [" + str(globals.sockethost) + ":" + str(globals.socketport) + "]" )
     except Exception as e:
-        logger.error("Problem starting listening Jeedom")
+        logging.error("Problem starting listening Jeedom")
 
     time.sleep(5)   
     sio.connect(globals.MCZ_App_URL)
     
     try:
-        logger.info("Starting mczmaestro" )
+        logging.info("Starting  link to mcz maestro" )
         threading.Thread( target=receiveMcz, args=('maestro',)).start()
-        logger.debug("Start mczmaestro OK" )
+        logging.debug("Link started to mcz maestro OK" )
     except Exception as e:
-        logger.error("Problem starting mczmaestro")
+        logging.error("Problem starting link to mcz maestro")
 
 
 
 # ----------------------------------------------------------------------------
 def read_socket(name):
-    logger.debug("start while read_socket")
+    logging.debug("start while read_socket")
     while 1:
         try:
             global JEEDOM_SOCKET_MESSAGE
             if not JEEDOM_SOCKET_MESSAGE.empty():
-                logger.debug("Message received in socket JEEDOM_SOCKET_MESSAGE")
+                logging.debug("Message received in socket JEEDOM_SOCKET_MESSAGE")
                 message = JEEDOM_SOCKET_MESSAGE.get().decode('utf-8')
                 message =json.loads(message)
                 if message['apikey'] != globals.apikey:
-                    logger.error("Invalid apikey from socket : " + str(message))
+                    logging.error("Invalid apikey from socket : " + str(message))
                     return
         except Exception as e:
-            logger.error("Exception on socket : %s" % str(e))
+            logging.error("Exception on socket : %s" % str(e))
         time.sleep(0.3)
 
 
 # ----------------------------------------------------------------------------
 def handler(signum=None, frame=None):
-        logger.debug("Signal %i caught, exiting..." % int(signum))
+        logging.debug("Signal %i caught, exiting..." % int(signum))
         shutdown()
 
 
 # ----------------------------------------------------------------------------
 def shutdown():
-        logger.debug("Shutdown in progress...")
-        logger.debug("Removing PID file " + str(globals.pidfile))
+        logging.debug("Shutdown in progress...")
+        logging.debug("Removing PID file " + str(globals.pidfile))
         try:
                 os.remove(globals.pidfile)
         except:
@@ -280,7 +280,7 @@ def shutdown():
                 jeedom_socket.close()
         except:
                 pass
-        logger.debug("Exit 0")
+        logging.debug("Exit 0")
         sys.stdout.flush()
         os._exit(0)
 
@@ -347,30 +347,30 @@ if args.socketport:
 if args.sockethost:
         globals.sockethost = args.sockethost
 
-logger = jeedom_utils.set_log_level(globals.log_level)
+jeedom_utils.set_log_level(globals.log_level)
 
-logger.info('Starting MCZ Remote Daemon (Version '+str(globals.DAEMON_VERSION)+')')
-logger.info('Log level: '+str(globals.log_level))
-logger.info('Socket port: '+str(globals.socketport))
-logger.info('Socket host: '+str(globals.sockethost))
-logger.info('MQTT IP: '+str(globals.MQTT_ip))
-logger.info('MQTT port: '+str(globals.MQTT_port))
-logger.info('MQTT Authentication: '+str(globals.MQTT_authentication))
-logger.info('MQTT User: '+ maskinfo(str(globals.MQTT_user)) )
-logger.info('MQTT Password: '+ maskinfo(str(globals.MQTT_pass)) )
-logger.info('MQTT Topic PUB: '+str(globals.MQTT_TOPIC_PUB))
-logger.info('MQTT Topic SUB: '+str(globals.MQTT_TOPIC_SUB))
-logger.info('MCZ Device Serial: '+ maskinfo(str(globals.MCZ_device_serial)) )
-logger.info('MCZ Device MAC: '+ maskinfo(str(globals.MCZ_device_MAC)) )
-logger.info('MCZ Url: '+str(globals.MCZ_App_URL))
-logger.info('PID file: '+str(globals.pidfile))
-logger.info('Apikey: '+str(globals.apikey))
-logger.info('Callback: '+str(globals.callback))
+logging.info('Starting MCZ Remote Daemon (Version '+str(globals.DAEMON_VERSION)+')')
+logging.info('Log level: '+str(globals.log_level))
+logging.debug('Socket port: '+str(globals.socketport))
+logging.debug('Socket host: '+str(globals.sockethost))
+logging.debug('MQTT IP: '+str(globals.MQTT_ip))
+logging.debug('MQTT port: '+str(globals.MQTT_port))
+logging.debug('MQTT Authentication: '+str(globals.MQTT_authentication))
+logging.debug('MQTT User: '+ maskinfo(str(globals.MQTT_user)) )
+logging.debug('MQTT Password: '+ maskinfo(str(globals.MQTT_pass)) )
+logging.debug('MQTT Topic PUB: '+str(globals.MQTT_TOPIC_PUB))
+logging.debug('MQTT Topic SUB: '+str(globals.MQTT_TOPIC_SUB))
+logging.debug('MCZ Device Serial: '+ maskinfo(str(globals.MCZ_device_serial)) )
+logging.debug('MCZ Device MAC: '+ maskinfo(str(globals.MCZ_device_MAC)) )
+logging.debug('MCZ Url: '+str(globals.MCZ_App_URL))
+logging.debug('PID file: '+str(globals.pidfile))
+logging.debug('Apikey: '+str(globals.apikey))
+logging.debug('Callback: '+str(globals.callback))
 
 signal.signal(signal.SIGINT, handler)
 signal.signal(signal.SIGTERM, handler)  
 
-logger.info('Connection en cours au broker MQTT (IP:' + globals.MQTT_ip + ' PORT:' + str(globals.MQTT_port) + ')')
+logging.info('Connection en cours au broker MQTT (IP:' + globals.MQTT_ip + ' PORT:' + str(globals.MQTT_port) + ')')
 client = mqtt.Client()
 if globals.MQTT_authentication == True:
     client.username_pw_set(username=globals.MQTT_user, password=globals.MQTT_pass)
@@ -378,7 +378,7 @@ client.on_connect = on_connect_mqtt
 client.on_message = on_message_mqtt
 client.connect(globals.MQTT_ip, globals.MQTT_port)
 client.loop_start()
-logger.info('Souscription au topic ' + str(globals.MQTT_TOPIC_SUB) + ' avec un Qos=1')
+logging.info('Souscription au topic ' + str(globals.MQTT_TOPIC_SUB) + ' avec un Qos=1')
 client.subscribe(globals.MQTT_TOPIC_SUB, qos=1)
 
 
@@ -386,11 +386,11 @@ try:
     jeedom_utils.write_pid(str(globals.pidfile))
     globals.JEEDOM_COM = jeedom_com(apikey = globals.apikey,url = globals.callback)
     if not globals.JEEDOM_COM.test():
-        logger.error('Network communication issues. Please fix your Jeedom network configuration.')
+        logging.error('Network communication issues. Please fix your Jeedom network configuration.')
         shutdown()
     jeedom_socket = jeedom_socket(port=globals.socketport,address=globals.sockethost)
     listen()
 except Exception as e:
-    logger.error('Fatal error : '+str(e))
-    logger.debug(traceback.format_exc())
+    logging.error('Fatal error : '+str(e))
+    logging.debug(traceback.format_exc())
     shutdown()

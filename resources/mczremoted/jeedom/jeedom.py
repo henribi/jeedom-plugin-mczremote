@@ -30,6 +30,7 @@ from socketserver import (TCPServer, StreamRequestHandler)
 import signal
 import unicodedata
 import pyudev
+from logging.handlers import  WatchedFileHandler
 import globals
 
 
@@ -172,8 +173,8 @@ class jeedom_utils():
 	def set_log_level(level = 'error'):
 		FORMAT = '[%(asctime)s.%(msecs)03d][%(levelname)s] : %(message)s'
 		logging.basicConfig(level=jeedom_utils.convert_log_level(level),format=FORMAT,datefmt='%Y-%m-%d %H:%M:%S',handlers = [WatchedFileHandler(globals.log_file)])
-		logger = logging.getLogger()
-		return logger
+		#logger = logging.getLogger()
+		#return logger
 
 	@staticmethod
 	def find_tty_usb(idVendor, idProduct, product = None):
