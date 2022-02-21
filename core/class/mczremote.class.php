@@ -163,7 +163,7 @@ class mczremote extends eqLogic {
 		$cmd .= ' --apikey ' . jeedom::getApiKey(__CLASS__);
 		$cmd .= ' --pidfile ' . jeedom::getTmpFolder(__CLASS__) . '/deamon.pid';
 		log::add('mczremote', 'debug', 'Lancement démon MCZremote : ' . $cmd);
-		$result = exec($cmd . ' >> ' . log::getPathToLog(__CLASS__) . ' 2>&1 &');
+		$result = exec($cmd . ' >> ' . log::getPathToLog(__CLASS__) . 'd' . ' 2>&1 &');
 		$i = 0;
 		while ($i < 30) {
 			$deamon_info = self::deamon_info();
