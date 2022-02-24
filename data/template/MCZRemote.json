@@ -1178,7 +1178,7 @@
                 "subType": "other",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "SUBMCZ",
+                    "topic": "SUBmcz",
                     "request": "34,1",
                     "retain": "0",
                     "autoPub": "0"
