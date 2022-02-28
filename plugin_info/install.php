@@ -18,19 +18,9 @@
 
 require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 
-const SOCKETPORT = 55520;
-const MQTTPORT = 1883;
-const TOPICPUB = 'PUBmcz';
-const TOPICSUB = 'SUBmcz';
-const URLMCZ = 'http://app.mcz.it:9000';
 
 function mczremote_install() {
 
-    config::save('UrlMCZ', URLMCZ, 'mczremote');
-    config::save('socketport', SOCKETPORT, 'mczremote');
-    config::save('MQTTport', MQTTPORT, 'mczremote');
-    config::save('TopicPub', TOPICPUB, 'mczremote');
-    config::save('TopicSub', TOPICSUB, 'mczremote');
 }
 
 function mczremote_update() {
