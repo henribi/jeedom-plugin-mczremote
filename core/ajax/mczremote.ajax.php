@@ -26,8 +26,19 @@ try {
     
     ajax::init();
 
-// Code removed bu author due to non respone by Jeedom
-    
+    if (init('action') == 'installTemplate') {
+        mczremote::installTemplate();
+        ajax::success();
+    }
+
+    if (init('action') == 'health') {
+        $data = md5(rand());
+        log::add('mczremote', 'debug', 'health:: data:' . var_export($data, true));
+        $params = array('method' => 'health', 'data' => $data );
+        mczremote::daemon_send($params);
+        ajax::success();
+    }
+
     throw new Exception(__('Aucune méthode correspondante à : ', __FILE__) . init('action'));
     /*     * *********Catch exeption*************** */
 } catch (Exception $e) {
