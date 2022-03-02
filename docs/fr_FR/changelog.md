@@ -4,6 +4,9 @@
 >
 >Pour rappel s'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte
 
+# 02/03/2022
+- Bloquage installation template dans jMQTT.
+
 # 17/02/2022
 - Add infos to recréer le log du démon s'il est supprimé
 - Modification du niveau de certains messages dans le démon (Info à debug)
