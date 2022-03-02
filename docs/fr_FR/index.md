@@ -51,10 +51,7 @@ Cette zone permet l'introduction des informations pour votre poêle.
 
 - Topic SUB:   Cette information est préremplie avec le topic de publication sur le serveur MQTT.
 
-- Installer template dans jMQTT:  Permet de copier un template pour les poêles MCZ en Remote dans jMQTT. Le template est présenté comme *(Perso)MCZRemote*. Il faut alors l'activer dans jMQTT.
-
-> ** Info **
-> La fonction "Installer template dans jMQTT" est bloquée pour le moment. Problème de format de template dans jMQTT.
+- Installer template dans jMQTT:  Permet de copier un template pour les poêles MCZ en Remote dans jMQTT. Le template est présenté comme *(Perso)MCZRemote*. Il faut alors l'activer dans jMQTT. Pour ce faire, il faut se référer à jMQTT.
 
 ### Démon
 

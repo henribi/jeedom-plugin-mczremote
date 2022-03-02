@@ -85,14 +85,12 @@ if (!isConnect()) {
                 <input class="configKey form-control" data-l1key="TopicSub" />
             </div>
         </div>
-        <!---
         <div class="form-group">
           <label class="col-md-4 control-label">{{Installer template dans jMQTT}}</label>
           <div class="col-md-4">
             <a class="btn btn-warning" id="bt_InstallTemplate">{{Installer}}</a>
           </div>
         </div>
-        --->
         <legend><i class="fas fa-university"></i> {{Démon}}</legend>
         <div class="form-group">
             <label class="col-sm-4 control-label">{{Port socket interne}} <sup><i class="fas fa-question-circle" title="{{Si le numéro de port est en conflit avec un autre service, mettez à jour ce champ en indiquant un numéro de port non utilisé par le système.}}"></i></sup></label>

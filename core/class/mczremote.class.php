@@ -74,20 +74,20 @@ class mczremote extends eqLogic {
 			if (file_exists( $MCZRemotePathTemplate)) {
 				$result = copy($MCZRemotePathTemplate, $jMQTTPathTemplate );
 				if ($result) {
+					if (method_exists('jMQTT', 'templateSplitJsonPathByFile')) {
+						log::add('mczremote', 'debug','Methode jMQTT::templateSplitJsonPathByFile  exist');
+						// Adapt template for the new jsonPath field
+						jMQTT::templateSplitJsonPathByFile('MCZRemote.json');
+						// Adapt template for the topic in configuration
+						jMQTT::moveTopicToConfigurationByFile('MCZRemote.json');
+					} else {
+						log::add('mczremote', 'warning','Methode jMQTT::templateSplitJsonPathByFile  not found');
+					}
 					log::add('mczremote', 'debug', 'Installation du template dans jMQTT  OK');
 				} else {
 					log::add('mczremote', 'warning', 'Installation du template dans jMQTT  NOK');
 				}
-				/***
-				shell_exec(system::getCmdSudo() . ' cp '. $MCZRemotePathTemplate . $filename . '  ' . $jMQTTPathTemplate);
-				shell_exec(system::getCmdSudo() . 'chown ' . system::get('www-uid') . ':' . system::get('www-gid') . ' ' . $jMQTTPathTemplate . $filename );
-
-				if (file_exists( $jMQTTPathTemplate  .'/MCZRemote.json')) {
-					log::add('mczremote', 'debug', 'Copie du template OK');
-				} else {
-					log::add('mczremote', 'warning', 'Copie du template NOK');
-				}
-				***/
+				
 			}
 		} 
 

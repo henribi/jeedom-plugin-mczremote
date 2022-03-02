@@ -45,6 +45,13 @@ echo "*         Install Python3 and dependencies             *"
 echo "********************************************************"
 sudo apt-get install -y python3 python3-pip
 
+echo 30 > "${PROGRESS_FILE}"
+echo "********************************************************"
+echo "*         Update version of python module six          *"
+echo "********************************************************"
+pip3 install --upgrade six
+
+
 echo 40 > "${PROGRESS_FILE}"
 echo "********************************************************"
 echo "*             Python3 'requests' module                *"
