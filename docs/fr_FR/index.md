@@ -74,7 +74,7 @@ Le template est visible dans jMQTT comme *(Perso)MCZRemote*. Celui-ci permet de 
 
 Dans jMQTT, utilisez le bouton + pour ajouter un équipement et donnez lui un nom.
 
-Cliquez ensuite sur le bouton *Appliquer template*.  Sélectionnez le template *(Perso)MCZRemote* et indiquez PUBmcz comme topic de base.  Respectez les majuscules et minuscules.
+Cliquez ensuite sur le bouton *Appliquer template*.  Sélectionnez le template *(Perso)MCZRemote* et indiquez comme topic de base le *Topic PUB* renseigné dans la configuration du plugin MCZRemote. La valeur par défaut est *PUBmcz*.  Respectez les majuscules et minuscules.
 
 Les commandes sont crées. Il vous reste à terminer la configuration de base de votre équipement et à le sauvegarder.
 
