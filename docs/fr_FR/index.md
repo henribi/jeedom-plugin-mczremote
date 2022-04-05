@@ -47,11 +47,11 @@ Cette zone permet l'introduction des informations pour votre poêle.
 
 - Utilisateur et Mot de passe:  Ces informations sont optionnelles. Il faut les indiquer si votre serveur MQTT nécessite un utilisateur et mot de passe pour se connecter.
 
-- Topic PUB:   Cette information est préremplie avec le topic de publication sur le serveur MQTT.
+- Topic PUB:   Cette information est préremplie avec le topic de publication sur le serveur MQTT. Ne pas la changer si vous utilisez le template.
 
-- Topic SUB:   Cette information est préremplie avec le topic de publication sur le serveur MQTT.
+- Topic SUB:   Cette information est préremplie avec le topic de publication sur le serveur MQTT. Ne pas la changer si vous utilisez le template
 
-- Installer template dans jMQTT:  Permet de copier un template pour les poêles MCZ en Remote dans jMQTT. Le template est présenté comme *(Perso)MCZRemote*. Il faut alors l'activer dans jMQTT. Pour ce faire, il faut se référer à jMQTT.
+- Installer template dans jMQTT:  Permet de copier un template des commandes pour les poêles MCZ en Remote dans jMQTT. L'utilisation du template est décrite dans une section spécifique.
 
 ### Démon
 
@@ -68,7 +68,25 @@ Dans cette zone, vous pouvez agir sur le démon.
 
 Un message éventuel dans cette zone indique un problème à corriger.
 
-# COMMANDES DU POELE
+# UTILISATION DU TEMPLATE
+
+Le template est visible dans jMQTT comme *(Perso)MCZRemote*. Celui-ci permet de créer facilement les commandes infos et actions dans jMQTT pour la gestion du poêle.
+
+Dans jMQTT, utilisez le bouton + pour ajouter un équipement et donnez lui un nom.
+
+Cliquez ensuite sur le bouton *Appliquer template*.  Sélectionnez le template *(Perso)MCZRemote* et indiquez PUBmcz comme topic de base.  Respectez les majuscules et minuscules.
+
+Les commandes sont crées. Il vous reste à terminer la configuration de base de votre équipement et à le sauvegarder.
+
+> Commande action: Temp_demandee_T1  et CmdPoele
+>
+> Ces deux commandes doivent être finalisée pour transmettre une valeur vers jMQTT et le poêle.  
+> La valeur CMD doit être remplacée par une commande info d'un virtuel.  
+> Temp_demandee_T1 permet d'envoyer la température de consigne au poêle.  
+> CmdPoele permet elle d'envoyer n'importe quelle chaîne de caractères vers le poêle. Cette chaîne (xx,yyy) doit être composée de la commande (xx) et de sa valeur (yyy)
+>
+
+# COMMANDES ACTIONS DU POELE
 
 Ce sont les commandes qu'il faut envoyer au poele pour le controler.
 Cette liste n'est pas exhaustive. Il y a plus d'informations dans le forum à l'url :

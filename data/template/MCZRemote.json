@@ -4,10 +4,11 @@
         "eqType_name": "jMQTT",
         "configuration": {
             "type": "eqpt",
-            "auto_add_cmd": "1",
+            "auto_add_cmd": "0",
             "Qos": "1",
             "createtime": "2021-09-11 17:22:36",
-            "updatetime": "2022-02-01 16:49:17"
+            "updatetime": "2022-02-01 16:49:17",
+            "icone": "chauffage"
         },
         "category": {
             "heating": "1",

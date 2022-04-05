@@ -4,6 +4,11 @@
 >
 >Pour rappel s'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte
 
+# 05/04/2022
+- Doc: Ajout *Utilisation du template*
+- Template: Suppression *Ajout automatique des commandes*
+- Template: Spécification icône chauffage
+
 # 02/03/2022
 - Réactivation de l'installation du template dans jMQTT.
 
