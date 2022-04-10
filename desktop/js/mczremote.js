@@ -15,6 +15,69 @@
  * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
  */
 
+$('#bt_InstallTemplate').off('click').on('click', function() {
+  $.ajax({
+    type: "POST",
+    url: "plugins/mczremote/core/ajax/mczremote.ajax.php",
+    data: {
+      action: "installTemplate"
+    },
+    dataType: 'json',
+    error: function(request, status, error) {
+      handleAjaxError(request, status, error);
+    },
+    success: function(data) {
+      if (data.state != 'ok') {
+        $('#div_alert').showAlert({ message: data.result, level: 'danger' });
+        return;
+      } 
+      else {
+        //window.toastr.clear()
+        //$('.pluginDisplayCard[data-plugin_id=' + $('#span_plugin_id').text() + ']').click()
+        $('#div_alert').showAlert({message: '{{Installation réussie}}',level: 'success' });
+      }
+
+    }
+  });
+});
+
+/**
+ * Add MCZRemote equipment callback
+ */
+$('.eqLogicAction[data-action=add_MCZR]').on('click', function () {
+    var eqL = {type: 'eqpt'};
+    var prompt = "{{Nom de l'équipement ?}}";
+    bootbox.prompt(prompt, function (result) {
+        if (result !== null || result !== '') {
+            $('#div_alert').showAlert({message: result, level: 'success'});
+
+            $.ajax({
+               type: "POST",
+               url: "plugins/mczremote/core/ajax/mczremote.ajax.php",
+               data: {
+                 action: "createEqptWithTemplate",
+                 eqptName: result
+               },
+               dataType: 'json',
+               error: function(request, status, error) {
+                 handleAjaxError(request, status, error);
+               },
+               success: function(data) {
+                 if (data.state != 'ok') {
+                   $('#div_alert').showAlert({ message: data.result, level: 'danger' });
+                   return;
+                 } else {
+                   //window.toastr.clear()
+                   //$('.pluginDisplayCard[data-plugin_id=' + $('#span_plugin_id').text() + ']').click()
+                   $('#div_alert').showAlert({message: '{{Installation réussie}}',level: 'success' });
+                 }
+               }
+             });
+        }
+    });
+});
+
+
 $('#bt_healthmczremote').on('click', function () {
     $('#div_alert').showAlert({message: '{{Communication en cours}} (MCZRemote Démon)', level: 'warning'});
     $.ajax({
@@ -73,3 +136,4 @@ function addCmdToTable(_cmd) {
     }
     jeedom.cmd.changeType($('#table_cmd tbody tr:last'), init(_cmd.subType));
 }
+

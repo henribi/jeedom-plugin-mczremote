@@ -31,6 +31,16 @@ try {
         ajax::success();
     }
 
+    if (init('action') == 'createEqptWithTemplate') {
+        log::add('mczremote', 'debug', 'Test:' . init('eqptName'));
+        $result = mczremote::createEqptWithTemplate(init('eqptName'));
+        if ($result != 0) {
+            throw new Exception(__('Error: Création Equipement avec Template', __FILE__));
+        }
+        ajax::success();
+    }
+
+
     if (init('action') == 'health') {
         $data = md5(rand());
         log::add('mczremote', 'debug', 'health:: data:' . var_export($data, true));

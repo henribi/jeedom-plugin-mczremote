@@ -30,7 +30,7 @@ from socketserver import (TCPServer, StreamRequestHandler)
 import signal
 import unicodedata
 import pyudev
-from logging.handlers import  WatchedFileHandler
+####from logging.handlers import  WatchedFileHandler     Not needed anymore... 
 import globals
 
 # ------------------------------------------------------------------------------

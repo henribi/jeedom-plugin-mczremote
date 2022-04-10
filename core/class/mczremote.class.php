@@ -93,6 +93,63 @@ class mczremote extends eqLogic {
 
 	}
 
+
+	public static function createEqptWithTemplate($eqptName = '') {
+		$return = 0;
+		$found = 0;
+		$pluginList = plugin::listPlugin($_activateOnly = true, $_orderByCategory = false, $_translate = true, $_nameOnly = true);
+		if (is_array($pluginList)) {
+			foreach ($pluginList as $val) {
+				if ($val == 'jMQTT'){
+					$pathPlugin = plugin::getPluginPath($val);
+					$found = 1;
+					break;
+				}
+				//log::add('mczremote', 'debug', 'plugin: ' . $val);
+			}
+		}
+		if ($found) {
+			//log::add('mczremote', 'debug', 'jMQTT found  and path: ' . $pathPlugin);
+			$jMQTTPathTemplate = $pathPlugin . '/data/template' . '/MCZRemote.json';
+			$MCZRemotePathTemplate = plugin::getPluginPath('mczremote') . '/data/template' . '/MCZRemote.json';
+			//log::add('mczremote', 'debug', 'Path dest: ' . $jMQTTPathTemplate . '    Path source: ' . $MCZRemotePathTemplate);
+			if (file_exists( $MCZRemotePathTemplate)) {
+				$result = copy($MCZRemotePathTemplate, $jMQTTPathTemplate );
+				if ($result) {
+					if (method_exists('jMQTT', 'templateSplitJsonPathByFile')) {
+						log::add('mczremote', 'debug','Methode jMQTT::templateSplitJsonPathByFile  exist');
+						// Adapt template for the new jsonPath field
+						jMQTT::templateSplitJsonPathByFile('MCZRemote.json');
+						// Adapt template for the topic in configuration
+						jMQTT::moveTopicToConfigurationByFile('MCZRemote.json');
+					} else {
+						log::add('mczremote', 'warning','Methode jMQTT::templateSplitJsonPathByFile  not found');
+					}
+					log::add('mczremote', 'debug', 'Installation du template dans jMQTT  OK');
+				} else {
+					log::add('mczremote', 'warning', 'Installation du template dans jMQTT  NOK');
+				}				
+			}
+
+			if (method_exists('jMQTT', 'createEqWithTemplate')) {
+				log::add('mczremote', 'debug','Methode jMQTT::createEqWithTemplate  exist');
+
+				// Recuperation des infos utiles pour appel jMQTT
+				$brkAddr = config::byKey('MQTTip', __CLASS__); 		// IP ou Hostname du Broker cible (afin de le retrouver)
+				$eqName = $eqptName;  								// Nom à donner à l'équipement dans jMQTT
+				$pathTemplate = $jMQTTPathTemplate;   				// '/var/www/........'; // Chemin vers la Template à appliquer
+				$eqTopic = config::byKey('TopicPub', __CLASS__); 	// Topic de base à remplacer dans la Template
+				$uuid = 'MCZR_eqpt'; 								// Pour retrouver l'eq lors d'un nouvel appel à la méthode
+				$eq = jMQTT::createEqWithTemplate($brkAddr, $eqName, $pathTemplate, $eqTopic, $uuid);
+				$return = 0;
+			} else {
+				log::add('mczremote', 'warning','Methode jMQTT::createEqWithTemplate  not found');
+				$return = 1;
+			}
+		}
+		return ($return); 
+	}
+
 	public static function deamon_info() {
 		$return = array();
 		$return['log'] = __CLASS__;

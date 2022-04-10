@@ -91,6 +91,12 @@ if (!isConnect()) {
             <a class="btn btn-warning" id="bt_InstallTemplate">{{Installer}}</a>
           </div>
         </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label">{{Installer template et créer équipement dans jMQTT}}</label>
+          <div class="col-md-4">
+            <a class="btn btn-warning" id="bt_CreateEqptWithTemplate">{{Installer & créer}}</a>
+          </div>
+        </div>
         <legend><i class="fas fa-university"></i> {{Démon}}</legend>
         <div class="form-group">
             <label class="col-sm-4 control-label">{{Port socket interne}} <sup><i class="fas fa-question-circle" title="{{Si le numéro de port est en conflit avec un autre service, mettez à jour ce champ en indiquant un numéro de port non utilisé par le système.}}"></i></sup></label>
@@ -107,6 +113,36 @@ if (!isConnect()) {
       url: "plugins/mczremote/core/ajax/mczremote.ajax.php",
       data: {
         action: "installTemplate"
+      },
+      dataType: 'json',
+      error: function(request, status, error) {
+        handleAjaxError(request, status, error);
+      },
+      success: function(data) {
+        if (data.state != 'ok') {
+          $('#div_alert').showAlert({
+            message: data.result,
+            level: 'danger'
+          });
+          return;
+        } else {
+          window.toastr.clear()
+          $('.pluginDisplayCard[data-plugin_id=' + $('#span_plugin_id').text() + ']').click()
+          $('#div_alert').showAlert({
+            message: '{{Installation réussie}}',
+            level: 'success'
+          });
+
+        }
+      }
+    });
+  });
+  $('#bt_CreateEqptWithTemplate').off('click').on('click', function() {
+    $.ajax({
+      type: "POST",
+      url: "plugins/mczremote/core/ajax/mczremote.ajax.php",
+      data: {
+        action: "createEqptWithTemplate"
       },
       dataType: 'json',
       error: function(request, status, error) {
