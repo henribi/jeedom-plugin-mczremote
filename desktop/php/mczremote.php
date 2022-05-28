@@ -21,11 +21,13 @@ $eqLogics = eqLogic::byType($plugin->getId());
                 <br>
                 <span>{{Installer template dans jMQTT}}</span>
             </div>
+            <!---
             <div class="cursor eqLogicAction logoSecondary" data-action="add_MCZR">
                 <i class="fas fa-project-diagram"></i>
                 <br>
                 <span>{{Installer template & créer jMQTT equipment}}</span>
             </div>
+            --->
             <div class="cursor eqLogicAction logoSecondary" id="bt_healthmczremote">
                 <i class="fas fa-hands-helping"></i>
                 <br>

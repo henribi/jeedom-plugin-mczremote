@@ -93,7 +93,7 @@ class mczremote extends eqLogic {
 
 	}
 
-
+/***
 	public static function createEqptWithTemplate($eqptName = '') {
 		$return = 0;
 		$found = 0;
@@ -149,6 +149,7 @@ class mczremote extends eqLogic {
 		}
 		return ($return); 
 	}
+***/
 
 	public static function deamon_info() {
 		$return = array();

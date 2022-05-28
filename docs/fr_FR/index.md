@@ -18,8 +18,22 @@ Ce plugin est prévu pour être installé sur le serveur Jeedom.
 
 > **MQTT**
 >
-> Vous devez disposer ou avoir préalablement installé un serveur MQTT. Généralement mosquitto.  Il peut être installé via le plugin ***jMQTT***
+> Vous devez disposer ou avoir préalablement installé un plugin MQTT connecté à un serveur MQTT. Généralement mosquitto.  
+> L'ensemble peut être installé via le plugin ***jMQTT***.
 >
+
+# GESTION
+
+![Gestion](../images/gestion.png)
+
+Dans cette page, vous avez les boutons suivants:
+
+- Configuration: Donne l'accès à la configuration du plugin
+
+- Installer template dans jMQTT:  Permet de copier un template des commandes pour les poêles MCZ en Remote dans ***jMQTT***. L'utilisation du template est décrite dans une section spécifique.
+
+- MCZ Démon: Permet de tester si le démon MCZ est toujours actif.
+
 
 # CONFIGURATION
 
@@ -51,8 +65,6 @@ Cette zone permet l'introduction des informations pour votre poêle.
 
 - Topic SUB:   Cette information est préremplie avec le topic de publication sur le serveur MQTT. Ne pas la changer si vous utilisez le template
 
-- Installer template dans jMQTT:  Permet de copier un template des commandes pour les poêles MCZ en Remote dans jMQTT. L'utilisation du template est décrite dans une section spécifique.
-
 ### Démon
 
 - Port socket interne  C'est le port de dialogue entre le démon et Jeedom. Ce port doit être adapté si vous avez un conflit de port sur votre installation.
@@ -69,6 +81,8 @@ Dans cette zone, vous pouvez agir sur le démon.
 Un message éventuel dans cette zone indique un problème à corriger.
 
 # UTILISATION DU TEMPLATE
+
+L'utilisation du template n'est actuellement disponible que via le plugin ***jMQTT***.
 
 Le template est visible dans jMQTT comme *(Perso)MCZRemote*. Celui-ci permet de créer facilement les commandes infos et actions dans jMQTT pour la gestion du poêle.
 
@@ -178,7 +192,7 @@ Profil
 Consigne de température    
   42,xx  avec xx le double de la température pour supporter les demi degré  
 
-Mise à jour de la date et heure du poêle. (nécessite cette version du script)  
+Mise à jour de la date et heure du poêle. (nécessite ce plugin)  
   9001,DDMMYYYYHHmm  
   exemple:  9001,011120212010      pour 01/11/2021 20h10
 
