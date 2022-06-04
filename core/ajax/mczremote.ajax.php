@@ -31,7 +31,7 @@ try {
         ajax::success();
     }
 
-/***
+
     if (init('action') == 'createEqptWithTemplate') {
         log::add('mczremote', 'debug', 'Test:' . init('eqptName'));
         $result = mczremote::createEqptWithTemplate(init('eqptName'));
@@ -40,7 +40,6 @@ try {
         }
         ajax::success();
     }
-***/
 
     if (init('action') == 'health') {
         $data = md5(rand());

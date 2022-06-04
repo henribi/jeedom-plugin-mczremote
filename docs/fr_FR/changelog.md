@@ -4,6 +4,10 @@
 >
 >Pour rappel s'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte
 
+# 04/06/2022
+- Ajout fonction Installer template et créer équipement dans jMQTT
+- Adaptation documentation
+
 # 28/05/2022
 - Déplacement de la fonction Installer template dans jMQTT
 - Adaptation documentation

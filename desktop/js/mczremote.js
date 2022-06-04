@@ -44,7 +44,7 @@ $('#bt_InstallTemplate').off('click').on('click', function() {
 /**
  * Add MCZRemote equipment callback
  */
-/*** 
+
 $('.eqLogicAction[data-action=add_MCZR]').on('click', function () {
     var eqL = {type: 'eqpt'};
     var prompt = "{{Nom de l'équipement ?}}";
@@ -77,7 +77,7 @@ $('.eqLogicAction[data-action=add_MCZR]').on('click', function () {
         }
     });
 });
-***/
+
 
 
 $('#bt_healthmczremote').on('click', function () {
