@@ -33,7 +33,7 @@ try {
 
 
     if (init('action') == 'createEqptWithTemplate') {
-        log::add('mczremote', 'debug', 'Test:' . init('eqptName'));
+        log::add('mczremote', 'debug', 'jMQTT equipment:' . init('eqptName'));
         $result = mczremote::createEqptWithTemplate(init('eqptName'));
         if ($result != 0) {
             throw new Exception(__('Error: Création Equipement avec Template', __FILE__));
