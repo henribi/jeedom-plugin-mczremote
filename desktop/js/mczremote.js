@@ -41,15 +41,10 @@ $('#bt_InstallTemplate').off('click').on('click', function() {
   });
 });
 
-/**
- * Add MCZRemote equipment callback
- */
-
-$('.eqLogicAction[data-action=add_MCZR]').on('click', function () {
-    var eqL = {type: 'eqpt'};
+$('#bt_CreateEqWithTemplate').off('click').on('click', function() {
     var prompt = "{{Nom de l'équipement ?}}";
     bootbox.prompt(prompt, function (result) {
-        if (result !== null || result !== '') {
+        if (result !== null && result !== '') {
             $('#div_alert').showAlert({message: result, level: 'success'});
 
             $.ajax({
@@ -74,7 +69,7 @@ $('.eqLogicAction[data-action=add_MCZR]').on('click', function () {
                  }
                }
              });
-        }
+        } 
     });
 });
 

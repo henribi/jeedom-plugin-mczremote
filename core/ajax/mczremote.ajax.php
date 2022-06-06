@@ -31,7 +31,6 @@ try {
         ajax::success();
     }
 
-
     if (init('action') == 'createEqptWithTemplate') {
         log::add('mczremote', 'debug', 'jMQTT equipment:' . init('eqptName'));
         $result = mczremote::createEqptWithTemplate(init('eqptName'));
