@@ -32,7 +32,7 @@ Dans cette page, vous avez les boutons suivants:
 
 - Installer template dans jMQTT:  Permet de copier un template des commandes pour les poêles MCZ en Remote dans ***jMQTT***. L'utilisation du template est décrite dans une section spécifique.
 
-- Installer template & créer jMQTT équipement: Comme le bouton précédent, on copie le template dans jMQTT mais ensuite on crée directement l'équipement dans jMQTT. Vous devez indiquer le nom de l'équipement. Il vous reste à peaufiner la configuration de l'équipement et à terminer le commandes actions: Temp_demandee_T1  et CmdPoele.  La version beta du 30/05/2022 de jMQTT n'est pas encore fonctionnelle.
+- Installer template & créer jMQTT équipement: Comme le bouton précédent, on copie le template dans jMQTT mais ensuite on crée directement l'équipement dans jMQTT. Vous devez indiquer le nom de l'équipement. Il vous reste à peaufiner la configuration de l'équipement et à terminer le commandes actions: Temp_demandee_T1  et CmdPoele.  La version du 13/06/2022 de jMQTT est la première fonctionnelle.
 
 - MCZ Démon: Permet de tester si le démon MCZ est toujours actif.
 
