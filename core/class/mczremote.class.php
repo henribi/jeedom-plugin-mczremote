@@ -149,14 +149,32 @@ class mczremote extends eqLogic {
 		$pathTemplate = $jMQTTPathTemplate;   				// '/var/www/........'; // Chemin vers la Template à appliquer
 		$eqTopic = config::byKey('TopicPub', __CLASS__); 	// Topic de base à remplacer dans la Template
 		$uuid = 'MCZR_eqpt'; 								// Pour retrouver l'eq lors d'un nouvel appel à la méthode
-		$eq = jMQTT::createEqWithTemplate($brkAddr, $eqName, $pathTemplate, $eqTopic, $uuid);
 
-		// Place le flag irremovable sur toutes les commandes
-		$eqId = $eq->getId();
-		$hbcmds = cmd::byEqLogicId($eqId);
-		foreach ($hbcmds as $hbcmd) {
-			$hbcmd->setConfiguration('irremovable', 1);
-			$hbcmd->save();
+		// Verification que l'on applique pas sur un équipement existant.  ==> doit d'abord etre supprimé
+		$eq = null;
+		// Search for a jMQTT Eq with $uuid, if found apply template to it
+		$type = json_encode(array(jMQTT::CONF_KEY_TEMPLATE_UUID => $uuid));
+		$eqpts = self::byTypeAndSearchConfiguration(jMQTT::class, substr($type, 1, -1));
+		foreach ($eqpts as $eqpt) {
+			log::add('mczremote', 'debug', 'createEqptWithTemplate ' . $eqName . ': Found matching Eq '.$eqpt->getHumanName());
+			$eq = $eqpt;
+			break;
+		}
+
+		if (!is_null($eq)) {
+			log::add('mczremote', 'warning', 'Un équipement ' . $eqpt->getHumanName() . ' est déjà installé dans jMQTT avec cette procédure.');
+			log::add('mczremote', 'warning', 'Réinstallation non autorisée.');
+			throw new Exception('Un équipement ' . $eqpt->getHumanName() . ' est déjà installé dans jMQTT avec cette procédure. Voir log');
+		} else {
+			$eq = jMQTT::createEqWithTemplate($brkAddr, $eqName, $pathTemplate, $eqTopic, $uuid);
+	
+			// Place le flag irremovable sur toutes les commandes
+			$eqId = $eq->getId();
+			$hbcmds = cmd::byEqLogicId($eqId);
+			foreach ($hbcmds as $hbcmd) {
+				$hbcmd->setConfiguration('irremovable', 1);
+				$hbcmd->save();
+			}
 		}
 
 		return ($return); 
