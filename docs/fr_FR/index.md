@@ -105,6 +105,20 @@ Les commandes sont crées. Il vous reste à terminer la configuration de base de
 > Temp_demandee_T1 permet d'envoyer la température de consigne au poêle.  
 > CmdPoele permet elle d'envoyer n'importe quelle chaîne de caractères vers le poêle. Cette chaîne (xx,yyy) doit être composée de la commande (xx) et de sa valeur (yyy)
 >
+>> Exemple:
+>> J’ai un équipement thermostat [chauffage][Poele_Pellets] qui permet d’envoyer la consigne de température.
+>> Dans cet équipement, j’ai un slider dont le résultat est disponible via une commande info
+>> ![Commande source](../images/cmdsource.png)
+>>
+>> Le nom complet de cette commande est #[Chauffage][Poele_Pellets][T_demandee]#
+>>
+>> Dans l’équipement PUBmcz, j’ai une commande action *T_Demandee_PoelePellets* pour envoyer la demande au poele.
+>> Dans la partie valeur, j’ai remplacé le CMD de « 42,CMD » par la commande donnée plus haut: #[Chauffage][Poele_Pellets][T_demandee]#
+>>
+>> ![Commande destination](../images/cmddest.png)
+>>
+>> Si vous avez plusieurs sources de définition de température, il faut définir pour chacune d’elle une commande action dans l’équipement PUBmcz et effectuer une configuration du même genre.
+>>
 
 # COMMANDES ACTIONS DU POELE
 
