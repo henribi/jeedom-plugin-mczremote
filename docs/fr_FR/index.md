@@ -206,7 +206,7 @@ Profil
   - Power Adaptatif     : 149.14
 
 >  **Remarque**:
->  Les modes adaptatif sont reconnus comme "code inconnu".
+>  Les modes adaptatif sont reconnus comme "code inconnu".  (Tests en cours)
 >
 
 Consigne de température    

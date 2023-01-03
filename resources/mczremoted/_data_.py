@@ -108,7 +108,11 @@ RecuperoInfo=[
 					[2, "Overnight"],
 					[3, "Comfort"],
 					[4, "Power 110%"],
-					[10, "Mode Adaptatif"],
+					[10, "Manuel Adaptatif"],
+					[11, "Dynamic Adaptatif"],
+					[12, "Overnight Adaptatif"],
+					[13, "Comfort Adaptatif"],
+					[14, "Power 110% Adaptatif"],
 					]],
 	[20,"Etat du mode Active",[
 					[0, "Off"],
