@@ -1,7 +1,7 @@
 {
 	"id" : "mczremote",
 	"name" : "MCZ Remote",
-	"description" : "Dialogue avec les poêle à pellets MCZ de la gamme Maestro via connexion remote",
+	"description" : "Dialogue avec les poêle à pellets MCZ de la gamme Maestro via connexion remote.",
 	"licence" : "AGPL",
 	"author" : "henribi",
 	"require" : "4.1",
@@ -20,6 +20,7 @@
 		"docker",
 		"diy",
 		"v4",
-		"atlas"
+		"atlas",
+		"luna"
 	]
 }
