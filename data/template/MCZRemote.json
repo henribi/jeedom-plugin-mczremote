@@ -1,14 +1,15 @@
 {
     "MCZRemote": {
-        "name": "PUBmcz",
+        "name": "MCZRemote",
         "eqType_name": "jMQTT",
         "configuration": {
             "type": "eqpt",
+            "createtime": "2021-09-11 17:22:36",
             "auto_add_cmd": "0",
             "Qos": "1",
-            "createtime": "2021-09-11 17:22:36",
-            "updatetime": "2022-02-01 16:49:17",
-            "icone": "chauffage"
+            "updatetime": "2023-09-20 08:03:15",
+            "icone": "mcz-remote",
+            "auto_add_topic": "%s/#"
         },
         "category": {
             "heating": "1",
@@ -22,10 +23,11 @@
         },
         "display": {
             "width": "232px",
-            "height": "672px"
+            "height": "852px"
         },
         "status": {
-            "lastCommunication": "2021-12-24 15:25:35"
+            "lastCommunication": "2023-09-09 10:27:27",
+            "enableDatime": "2023-09-09 10:27:27"
         },
         "cache": [],
         "commands": [
@@ -36,7 +38,8 @@
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{Annee du poele}"
+                    "topic": "%s",
+                    "jsonPath": "['Annee du poele']"
                 },
                 "template": {
                     "dashboard": "core::default",
@@ -55,7 +58,8 @@
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{Mois du poele (1-12)}"
+                    "topic": "%s",
+                    "jsonPath": "['Mois du poele (1-12)']"
                 },
                 "template": {
                     "dashboard": "core::default",
@@ -74,7 +78,8 @@
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{Jour du poele (1-31)}"
+                    "topic": "%s",
+                    "jsonPath": "['Jour du poele (1-31)']"
                 },
                 "template": {
                     "dashboard": "core::default",
@@ -93,7 +98,8 @@
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{Heure du poele (0-23)}"
+                    "topic": "%s",
+                    "jsonPath": "['Heure du poele (0-23)']"
                 },
                 "template": {
                     "dashboard": "core::default",
@@ -112,11 +118,12 @@
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{Etat du ventilateur canalise 2}"
+                    "topic": "%s",
+                    "jsonPath": "['Etat du ventilateur canalise 2']"
                 },
                 "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
                 },
                 "display": {
                     "invertBinary": "0"
@@ -131,7 +138,8 @@
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{Minutes du poele (0-29)}"
+                    "topic": "%s",
+                    "jsonPath": "['Minutes du poele (0-29)']"
                 },
                 "template": {
                     "dashboard": "core::default",
@@ -150,7 +158,8 @@
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{Etat du poele}"
+                    "topic": "%s",
+                    "jsonPath": "['Etat du poele']"
                 },
                 "template": {
                     "dashboard": "core::default",
@@ -169,7 +178,28 @@
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{Profil}"
+                    "topic": "%s",
+                    "jsonPath": "[Profil]"
+                },
+                "template": {
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
+                },
+                "display": {
+                    "invertBinary": "0"
+                },
+                "isVisible": "1",
+                "alert": []
+            },
+            {
+                "eqType": "jMQTT",
+                "name": "Puissance active",
+                "type": "info",
+                "subType": "string",
+                "isHistorized": "0",
+                "configuration": {
+                    "topic": "%s",
+                    "jsonPath": "['Puissance Active']"
                 },
                 "template": {
                     "dashboard": "core::default",
@@ -188,68 +218,12 @@
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{Puffer Temperature}"
-                },
-                "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
-                },
-                "display": {
-                    "invertBinary": "0"
-                },
-                "isVisible": "0",
-                "alert": []
-            },
-            {
-                "eqType": "jMQTT",
-                "name": "Puissance active",
-                "type": "info",
-                "subType": "string",
-                "isHistorized": "0",
-                "configuration": {
-                    "topic": "%s{Puissance Active}"
+                    "topic": "%s",
+                    "jsonPath": "['Puffer Temperature']"
                 },
                 "template": {
                     "dashboard": "core::default",
                     "mobile": "core::default"
-                },
-                "display": {
-                    "invertBinary": "0"
-                },
-                "isVisible": "1",
-                "alert": []
-            },
-            {
-                "eqType": "jMQTT",
-                "name": "T Chaudiere",
-                "type": "info",
-                "subType": "string",
-                "isHistorized": "0",
-                "configuration": {
-                    "topic": "%s{Temperature chaudiere}"
-                },
-                "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
-                },
-                "display": {
-                    "invertBinary": "0"
-                },
-                "isVisible": "0",
-                "alert": []
-            },
-            {
-                "eqType": "jMQTT",
-                "name": "T NTC3",
-                "type": "info",
-                "subType": "string",
-                "isHistorized": "0",
-                "configuration": {
-                    "topic": "%s{Temperature NTC3}"
-                },
-                "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
                 },
                 "display": {
                     "invertBinary": "0"
@@ -264,7 +238,8 @@
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{Etat du ventilateur ambiance}"
+                    "topic": "%s",
+                    "jsonPath": "['Etat du ventilateur ambiance']"
                 },
                 "template": {
                     "dashboard": "core::default",
@@ -283,7 +258,8 @@
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{Etat du ventilateur canalise 1}"
+                    "topic": "%s",
+                    "jsonPath": "['Etat du ventilateur canalise 1']"
                 },
                 "template": {
                     "dashboard": "core::default",
@@ -297,31 +273,13 @@
             },
             {
                 "eqType": "jMQTT",
-                "name": "Active-Set",
-                "type": "info",
-                "subType": "string",
-                "isHistorized": "0",
-                "configuration": {
-                    "topic": "%s{ACTIVE - Set}"
-                },
-                "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
-                },
-                "display": {
-                    "invertBinary": "0"
-                },
-                "isVisible": "0",
-                "alert": []
-            },
-            {
-                "eqType": "jMQTT",
                 "name": "Eco",
                 "type": "info",
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{Mode ECO}"
+                    "topic": "%s",
+                    "jsonPath": "['Mode ECO']"
                 },
                 "template": {
                     "dashboard": "core::default",
@@ -340,7 +298,8 @@
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{Antigel}"
+                    "topic": "%s",
+                    "jsonPath": "[Antigel]"
                 },
                 "template": {
                     "dashboard": "core::default",
@@ -350,25 +309,6 @@
                     "invertBinary": "0"
                 },
                 "isVisible": "1",
-                "alert": []
-            },
-            {
-                "eqType": "jMQTT",
-                "name": "RPM-Ventilateur Fumees",
-                "type": "info",
-                "subType": "string",
-                "isHistorized": "0",
-                "configuration": {
-                    "topic": "%s{RPM - Ventilateur fummees}"
-                },
-                "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
-                },
-                "display": {
-                    "invertBinary": "0"
-                },
-                "isVisible": "0",
                 "alert": []
             },
             {
@@ -378,7 +318,8 @@
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{Minutes avant extinction}"
+                    "topic": "%s",
+                    "jsonPath": "['Minutes avant extinction']"
                 },
                 "template": {
                     "dashboard": "core::default",
@@ -392,16 +333,17 @@
             },
             {
                 "eqType": "jMQTT",
-                "name": "RPM-Vis sans fin Set",
+                "name": "T Chaudiere",
                 "type": "info",
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{RPM - Vis sans fin - SET}"
+                    "topic": "%s",
+                    "jsonPath": "['Temperature chaudiere']"
                 },
                 "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
                 },
                 "display": {
                     "invertBinary": "0"
@@ -416,7 +358,8 @@
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{Etat effets sonores}"
+                    "topic": "%s",
+                    "jsonPath": "['Etat effets sonores']"
                 },
                 "template": {
                     "dashboard": "core::default",
@@ -426,44 +369,6 @@
                     "invertBinary": "0"
                 },
                 "isVisible": "1",
-                "alert": []
-            },
-            {
-                "eqType": "jMQTT",
-                "name": "RPM-Vis sans fin Live",
-                "type": "info",
-                "subType": "string",
-                "isHistorized": "0",
-                "configuration": {
-                    "topic": "%s{RPM - Vis sans fin - LIVE}"
-                },
-                "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
-                },
-                "display": {
-                    "invertBinary": "0"
-                },
-                "isVisible": "0",
-                "alert": []
-            },
-            {
-                "eqType": "jMQTT",
-                "name": "Brazero",
-                "type": "info",
-                "subType": "string",
-                "isHistorized": "0",
-                "configuration": {
-                    "topic": "%s{Brazero}"
-                },
-                "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
-                },
-                "display": {
-                    "invertBinary": "0"
-                },
-                "isVisible": "0",
                 "alert": []
             },
             {
@@ -473,7 +378,8 @@
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{Mode}"
+                    "topic": "%s",
+                    "jsonPath": "[Mode]"
                 },
                 "template": {
                     "dashboard": "core::default",
@@ -483,25 +389,6 @@
                     "invertBinary": "0"
                 },
                 "isVisible": "1",
-                "alert": []
-            },
-            {
-                "eqType": "jMQTT",
-                "name": "Brazero_0",
-                "type": "info",
-                "subType": "string",
-                "isHistorized": "0",
-                "configuration": {
-                    "topic": "%s{Brazero}{0}"
-                },
-                "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
-                },
-                "display": {
-                    "invertBinary": "0"
-                },
-                "isVisible": "0",
                 "alert": []
             },
             {
@@ -511,7 +398,8 @@
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{Heures avant entretien}"
+                    "topic": "%s",
+                    "jsonPath": "['Heures avant entretien']"
                 },
                 "template": {
                     "dashboard": "core::default",
@@ -521,25 +409,6 @@
                     "invertBinary": "0"
                 },
                 "isVisible": "1",
-                "alert": []
-            },
-            {
-                "eqType": "jMQTT",
-                "name": "Brazero_1",
-                "type": "info",
-                "subType": "string",
-                "isHistorized": "0",
-                "configuration": {
-                    "topic": "%s{Brazero}{1}"
-                },
-                "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
-                },
-                "display": {
-                    "invertBinary": "0"
-                },
-                "isVisible": "0",
                 "alert": []
             },
             {
@@ -549,7 +418,8 @@
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{Heures de fonctionnement en puissance 1 (s)}"
+                    "topic": "%s",
+                    "jsonPath": "['Heures de fonctionnement en puissance 1 (s)']"
                 },
                 "template": {
                     "dashboard": "core::default",
@@ -563,35 +433,17 @@
             },
             {
                 "eqType": "jMQTT",
-                "name": "Heures_P2",
+                "name": "T NTC3",
                 "type": "info",
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{Heures de fonctionnement en puissance 2 (s)}"
+                    "topic": "%s",
+                    "jsonPath": "['Temperature NTC3']"
                 },
                 "template": {
                     "dashboard": "core::default",
                     "mobile": "core::default"
-                },
-                "display": {
-                    "invertBinary": "0"
-                },
-                "isVisible": "1",
-                "alert": []
-            },
-            {
-                "eqType": "jMQTT",
-                "name": "Etat mode Active",
-                "type": "info",
-                "subType": "string",
-                "isHistorized": "0",
-                "configuration": {
-                    "topic": "%s{Etat du mode Active}"
-                },
-                "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
                 },
                 "display": {
                     "invertBinary": "0"
@@ -601,12 +453,13 @@
             },
             {
                 "eqType": "jMQTT",
-                "name": "Heures_P3",
+                "name": "Heures_P2",
                 "type": "info",
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{Heures de fonctionnement en puissance 3 (s)}"
+                    "topic": "%s",
+                    "jsonPath": "['Heures de fonctionnement en puissance 2 (s)']"
                 },
                 "template": {
                     "dashboard": "core::default",
@@ -620,16 +473,37 @@
             },
             {
                 "eqType": "jMQTT",
-                "name": "Active-Live",
+                "name": "Heures_P3",
                 "type": "info",
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{ACTIVE - Live}"
+                    "topic": "%s",
+                    "jsonPath": "['Heures de fonctionnement en puissance 3 (s)']"
                 },
                 "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
+                },
+                "display": {
+                    "invertBinary": "0"
+                },
+                "isVisible": "1",
+                "alert": []
+            },
+            {
+                "eqType": "jMQTT",
+                "name": "Active-Set",
+                "type": "info",
+                "subType": "string",
+                "isHistorized": "0",
+                "configuration": {
+                    "topic": "%s",
+                    "jsonPath": "['ACTIVE - Set']"
+                },
+                "template": {
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
                 },
                 "display": {
                     "invertBinary": "0"
@@ -644,7 +518,8 @@
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{Heures de fonctionnement en puissance 4 (s)}"
+                    "topic": "%s",
+                    "jsonPath": "['Heures de fonctionnement en puissance 4 (s)']"
                 },
                 "template": {
                     "dashboard": "core::default",
@@ -663,7 +538,8 @@
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{Heures de fonctionnement en puissance 5 (s)}"
+                    "topic": "%s",
+                    "jsonPath": "['Heures de fonctionnement en puissance 5 (s)']"
                 },
                 "template": {
                     "dashboard": "core::default",
@@ -682,7 +558,8 @@
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{Heures de fonctionnement total (s)}"
+                    "topic": "%s",
+                    "jsonPath": "['Heures de fonctionnement total (s)']"
                 },
                 "template": {
                     "dashboard": "core::default",
@@ -701,7 +578,8 @@
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{Mode de regulation}"
+                    "topic": "%s",
+                    "jsonPath": "['Mode de regulation']"
                 },
                 "template": {
                     "dashboard": "core::default",
@@ -720,11 +598,12 @@
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{Silence}"
+                    "topic": "%s",
+                    "jsonPath": "[Silence]"
                 },
                 "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
                 },
                 "display": {
                     "invertBinary": "0"
@@ -739,7 +618,8 @@
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{Nombre d'allumages}"
+                    "topic": "%s",
+                    "jsonPath": "['Nombre d'allumages']"
                 },
                 "template": {
                     "dashboard": "core::default",
@@ -758,7 +638,8 @@
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{Sleep}"
+                    "topic": "%s",
+                    "jsonPath": "[Sleep]"
                 },
                 "template": {
                     "dashboard": "core::default",
@@ -768,6 +649,26 @@
                     "invertBinary": "0"
                 },
                 "isVisible": "1",
+                "alert": []
+            },
+            {
+                "eqType": "jMQTT",
+                "name": "RPM-Ventilateur Fumees",
+                "type": "info",
+                "subType": "string",
+                "isHistorized": "0",
+                "configuration": {
+                    "topic": "%s",
+                    "jsonPath": "['RPM - Ventilateur fummees']"
+                },
+                "template": {
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
+                },
+                "display": {
+                    "invertBinary": "0"
+                },
+                "isVisible": "0",
                 "alert": []
             },
             {
@@ -777,7 +678,8 @@
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{Sonde Pellets}"
+                    "topic": "%s",
+                    "jsonPath": "['Sonde Pellets']"
                 },
                 "template": {
                     "dashboard": "core::default",
@@ -787,25 +689,6 @@
                     "invertBinary": "0"
                 },
                 "isVisible": "1",
-                "alert": []
-            },
-            {
-                "eqType": "jMQTT",
-                "name": "T Boiler",
-                "type": "info",
-                "subType": "string",
-                "isHistorized": "0",
-                "configuration": {
-                    "topic": "%s{TEMP - Boiler}"
-                },
-                "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
-                },
-                "display": {
-                    "invertBinary": "0"
-                },
-                "isVisible": "0",
                 "alert": []
             },
             {
@@ -815,7 +698,8 @@
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{Effet sonore}"
+                    "topic": "%s",
+                    "jsonPath": "['Effet sonore']"
                 },
                 "template": {
                     "dashboard": "core::default",
@@ -829,31 +713,13 @@
             },
             {
                 "eqType": "jMQTT",
-                "name": "PUBmcz",
-                "type": "info",
-                "subType": "string",
-                "isHistorized": "0",
-                "configuration": {
-                    "topic": "%s"
-                },
-                "template": {
-                    "dashboard": "core::default",
-                    "mobile": "core::default"
-                },
-                "display": {
-                    "invertBinary": "0"
-                },
-                "isVisible": "0",
-                "alert": []
-            },
-            {
-                "eqType": "jMQTT",
                 "name": "T Ambiance",
                 "type": "info",
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{Temperature ambiante}"
+                    "topic": "%s",
+                    "jsonPath": "['Temperature ambiante']"
                 },
                 "template": {
                     "dashboard": "core::default",
@@ -872,7 +738,8 @@
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{TEMP - Consigne}"
+                    "topic": "%s",
+                    "jsonPath": "['TEMP - Consigne']"
                 },
                 "template": {
                     "dashboard": "core::default",
@@ -891,7 +758,8 @@
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{Mode Chronotermostato}"
+                    "topic": "%s",
+                    "jsonPath": "['Mode Chronotermostato']"
                 },
                 "template": {
                     "dashboard": "core::default",
@@ -905,12 +773,33 @@
             },
             {
                 "eqType": "jMQTT",
+                "name": "RPM-Vis sans fin Set",
+                "type": "info",
+                "subType": "string",
+                "isHistorized": "0",
+                "configuration": {
+                    "topic": "%s",
+                    "jsonPath": "['RPM - Vis sans fin - SET']"
+                },
+                "template": {
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
+                },
+                "display": {
+                    "invertBinary": "0"
+                },
+                "isVisible": "0",
+                "alert": []
+            },
+            {
+                "eqType": "jMQTT",
                 "name": "Etat Bougie",
                 "type": "info",
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{Etat de la bougie}"
+                    "topic": "%s",
+                    "jsonPath": "['Etat de la bougie']"
                 },
                 "template": {
                     "dashboard": "core::default",
@@ -929,7 +818,8 @@
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{TEMP - Carte mere}"
+                    "topic": "%s",
+                    "jsonPath": "['TEMP - Carte mere']"
                 },
                 "template": {
                     "dashboard": "core::default",
@@ -939,6 +829,26 @@
                     "invertBinary": "0"
                 },
                 "isVisible": "1",
+                "alert": []
+            },
+            {
+                "eqType": "jMQTT",
+                "name": "RPM-Vis sans fin Live",
+                "type": "info",
+                "subType": "string",
+                "isHistorized": "0",
+                "configuration": {
+                    "topic": "%s",
+                    "jsonPath": "['RPM - Vis sans fin - LIVE']"
+                },
+                "template": {
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
+                },
+                "display": {
+                    "invertBinary": "0"
+                },
+                "isVisible": "0",
                 "alert": []
             },
             {
@@ -948,7 +858,8 @@
                 "subType": "string",
                 "isHistorized": "0",
                 "configuration": {
-                    "topic": "%s{Temperature des fumees}"
+                    "topic": "%s",
+                    "jsonPath": "['Temperature des fumees']"
                 },
                 "template": {
                     "dashboard": "core::default",
@@ -958,139 +869,6 @@
                     "invertBinary": "0"
                 },
                 "isVisible": "1",
-                "alert": []
-            },
-            {
-                "eqType": "jMQTT",
-                "name": "T Sonde wifi 1",
-                "type": "info",
-                "subType": "string",
-                "isHistorized": "0",
-                "configuration": {
-                    "topic": "%s{Sonde wifi temperature 1}"
-                },
-                "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
-                },
-                "display": {
-                    "invertBinary": "0"
-                },
-                "isVisible": "0",
-                "alert": []
-            },
-            {
-                "eqType": "jMQTT",
-                "name": "T Sonde wifi 2",
-                "type": "info",
-                "subType": "string",
-                "isHistorized": "0",
-                "configuration": {
-                    "topic": "%s{Sonde wifi temperature 2}"
-                },
-                "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
-                },
-                "display": {
-                    "invertBinary": "0"
-                },
-                "isVisible": "0",
-                "alert": []
-            },
-            {
-                "eqType": "jMQTT",
-                "name": "T Sonde wifi 3",
-                "type": "info",
-                "subType": "string",
-                "isHistorized": "0",
-                "configuration": {
-                    "topic": "%s{Sonde wifi temperature 3}"
-                },
-                "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
-                },
-                "display": {
-                    "invertBinary": "0"
-                },
-                "isVisible": "0",
-                "alert": []
-            },
-            {
-                "eqType": "jMQTT",
-                "name": "Set Puffer",
-                "type": "info",
-                "subType": "string",
-                "isHistorized": "0",
-                "configuration": {
-                    "topic": "%s{Set Puffer}"
-                },
-                "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
-                },
-                "display": {
-                    "invertBinary": "0"
-                },
-                "isVisible": "0",
-                "alert": []
-            },
-            {
-                "eqType": "jMQTT",
-                "name": "Set Boiler",
-                "type": "info",
-                "subType": "string",
-                "isHistorized": "0",
-                "configuration": {
-                    "topic": "%s{Set Boiler}"
-                },
-                "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
-                },
-                "display": {
-                    "invertBinary": "0"
-                },
-                "isVisible": "0",
-                "alert": []
-            },
-            {
-                "eqType": "jMQTT",
-                "name": "Set Health",
-                "type": "info",
-                "subType": "string",
-                "isHistorized": "0",
-                "configuration": {
-                    "topic": "%s{Set Health}"
-                },
-                "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
-                },
-                "display": {
-                    "invertBinary": "0"
-                },
-                "isVisible": "0",
-                "alert": []
-            },
-            {
-                "eqType": "jMQTT",
-                "name": "T Retour",
-                "type": "info",
-                "subType": "string",
-                "isHistorized": "0",
-                "configuration": {
-                    "topic": "%s{Temperature retour}"
-                },
-                "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
-                },
-                "display": {
-                    "invertBinary": "0"
-                },
-                "isVisible": "0",
                 "alert": []
             },
             {
@@ -1111,6 +889,26 @@
                     "mobile": "core::default"
                 },
                 "isVisible": "1",
+                "alert": []
+            },
+            {
+                "eqType": "jMQTT",
+                "name": "Brazero",
+                "type": "info",
+                "subType": "string",
+                "isHistorized": "0",
+                "configuration": {
+                    "topic": "%s",
+                    "jsonPath": "[Brazero]"
+                },
+                "template": {
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
+                },
+                "display": {
+                    "invertBinary": "0"
+                },
+                "isVisible": "0",
                 "alert": []
             },
             {
@@ -1155,25 +953,6 @@
             },
             {
                 "eqType": "jMQTT",
-                "name": "Temp_demandee_T1",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                "configuration": {
-                    "topic": "SUBmcz",
-                    "request": "42,CMD",
-                    "retain": "0",
-                    "autoPub": "0"
-                },
-                "template": {
-                    "dashboard": "core::default",
-                    "mobile": "core::default"
-                },
-                "isVisible": "1",
-                "alert": []
-            },
-            {
-                "eqType": "jMQTT",
                 "name": "On",
                 "type": "action",
                 "subType": "other",
@@ -1193,25 +972,6 @@
             },
             {
                 "eqType": "jMQTT",
-                "name": "CmdPoele",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                "configuration": {
-                    "topic": "SUBmcz",
-                    "request": "CMD",
-                    "retain": "0",
-                    "autoPub": "0"
-                },
-                "template": {
-                    "dashboard": "core::default",
-                    "mobile": "core::default"
-                },
-                "isVisible": "0",
-                "alert": []
-            },
-            {
-                "eqType": "jMQTT",
                 "name": "Off",
                 "type": "action",
                 "subType": "other",
@@ -1227,6 +987,26 @@
                     "mobile": "core::default"
                 },
                 "isVisible": "1",
+                "alert": []
+            },
+            {
+                "eqType": "jMQTT",
+                "name": "Brazero_0",
+                "type": "info",
+                "subType": "string",
+                "isHistorized": "0",
+                "configuration": {
+                    "topic": "%s",
+                    "jsonPath": "[Brazero][0]"
+                },
+                "template": {
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
+                },
+                "display": {
+                    "invertBinary": "0"
+                },
+                "isVisible": "0",
                 "alert": []
             },
             {
@@ -1261,8 +1041,8 @@
                     "autoPub": "0"
                 },
                 "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
                 },
                 "isVisible": "1",
                 "alert": []
@@ -1280,8 +1060,8 @@
                     "autoPub": "0"
                 },
                 "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
                 },
                 "isVisible": "1",
                 "alert": []
@@ -1299,10 +1079,30 @@
                     "autoPub": "0"
                 },
                 "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
                 },
                 "isVisible": "1",
+                "alert": []
+            },
+            {
+                "eqType": "jMQTT",
+                "name": "Brazero_1",
+                "type": "info",
+                "subType": "string",
+                "isHistorized": "0",
+                "configuration": {
+                    "topic": "%s",
+                    "jsonPath": "[Brazero][1]"
+                },
+                "template": {
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
+                },
+                "display": {
+                    "invertBinary": "0"
+                },
+                "isVisible": "0",
                 "alert": []
             },
             {
@@ -1318,8 +1118,8 @@
                     "autoPub": "0"
                 },
                 "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
                 },
                 "isVisible": "1",
                 "alert": []
@@ -1337,8 +1137,8 @@
                     "autoPub": "0"
                 },
                 "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
                 },
                 "isVisible": "1",
                 "alert": []
@@ -1356,8 +1156,8 @@
                     "autoPub": "0"
                 },
                 "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
                 },
                 "isVisible": "1",
                 "alert": []
@@ -1375,8 +1175,8 @@
                     "autoPub": "0"
                 },
                 "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
                 },
                 "isVisible": "1",
                 "alert": []
@@ -1394,10 +1194,30 @@
                     "autoPub": "0"
                 },
                 "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
                 },
                 "isVisible": "1",
+                "alert": []
+            },
+            {
+                "eqType": "jMQTT",
+                "name": "Etat mode Active",
+                "type": "info",
+                "subType": "string",
+                "isHistorized": "0",
+                "configuration": {
+                    "topic": "%s",
+                    "jsonPath": "['Etat du mode Active']"
+                },
+                "template": {
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
+                },
+                "display": {
+                    "invertBinary": "0"
+                },
+                "isVisible": "0",
                 "alert": []
             },
             {
@@ -1413,8 +1233,8 @@
                     "autoPub": "0"
                 },
                 "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
                 },
                 "isVisible": "1",
                 "alert": []
@@ -1432,8 +1252,8 @@
                     "autoPub": "0"
                 },
                 "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
                 },
                 "isVisible": "1",
                 "alert": []
@@ -1451,8 +1271,8 @@
                     "autoPub": "0"
                 },
                 "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
                 },
                 "isVisible": "1",
                 "alert": []
@@ -1470,10 +1290,30 @@
                     "autoPub": "0"
                 },
                 "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
                 },
                 "isVisible": "1",
+                "alert": []
+            },
+            {
+                "eqType": "jMQTT",
+                "name": "Active-Live",
+                "type": "info",
+                "subType": "string",
+                "isHistorized": "0",
+                "configuration": {
+                    "topic": "%s",
+                    "jsonPath": "['ACTIVE - Live']"
+                },
+                "template": {
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
+                },
+                "display": {
+                    "invertBinary": "0"
+                },
+                "isVisible": "0",
                 "alert": []
             },
             {
@@ -1489,200 +1329,10 @@
                     "autoPub": "0"
                 },
                 "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
                 },
                 "isVisible": "1",
-                "alert": []
-            },
-            {
-                "eqType": "jMQTT",
-                "name": "Ventilateur_2-1",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                "configuration": {
-                    "topic": "SUBmcz",
-                    "request": "38,1",
-                    "retain": "0",
-                    "autoPub": "0"
-                },
-                "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
-                },
-                "isVisible": "0",
-                "alert": []
-            },
-            {
-                "eqType": "jMQTT",
-                "name": "Ventilateur_2-2",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                "configuration": {
-                    "topic": "SUBmcz",
-                    "request": "38,2",
-                    "retain": "0",
-                    "autoPub": "0"
-                },
-                "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
-                },
-                "isVisible": "0",
-                "alert": []
-            },
-            {
-                "eqType": "jMQTT",
-                "name": "Ventilateur_2-3",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                "configuration": {
-                    "topic": "SUBmcz",
-                    "request": "38,3",
-                    "retain": "0",
-                    "autoPub": "0"
-                },
-                "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
-                },
-                "isVisible": "0",
-                "alert": []
-            },
-            {
-                "eqType": "jMQTT",
-                "name": "Ventilateur_2-4",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                "configuration": {
-                    "topic": "SUBmcz",
-                    "request": "38,4",
-                    "retain": "0",
-                    "autoPub": "0"
-                },
-                "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
-                },
-                "isVisible": "0",
-                "alert": []
-            },
-            {
-                "eqType": "jMQTT",
-                "name": "Ventilateur_2-5",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                "configuration": {
-                    "topic": "SUBmcz",
-                    "request": "38,5",
-                    "retain": "0",
-                    "autoPub": "0"
-                },
-                "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
-                },
-                "isVisible": "0",
-                "alert": []
-            },
-            {
-                "eqType": "jMQTT",
-                "name": "Ventilateur_3-1",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                "configuration": {
-                    "topic": "SUBmcz",
-                    "request": "39,1",
-                    "retain": "0",
-                    "autoPub": "0"
-                },
-                "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
-                },
-                "isVisible": "0",
-                "alert": []
-            },
-            {
-                "eqType": "jMQTT",
-                "name": "Ventilateur_3-2",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                "configuration": {
-                    "topic": "SUBmcz",
-                    "request": "39,2",
-                    "retain": "0",
-                    "autoPub": "0"
-                },
-                "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
-                },
-                "isVisible": "0",
-                "alert": []
-            },
-            {
-                "eqType": "jMQTT",
-                "name": "Ventilateur_3-3",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                "configuration": {
-                    "topic": "SUBmcz",
-                    "request": "39,3",
-                    "retain": "0",
-                    "autoPub": "0"
-                },
-                "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
-                },
-                "isVisible": "0",
-                "alert": []
-            },
-            {
-                "eqType": "jMQTT",
-                "name": "Ventilateur_3-4",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                "configuration": {
-                    "topic": "SUBmcz",
-                    "request": "39,4",
-                    "retain": "0",
-                    "autoPub": "0"
-                },
-                "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
-                },
-                "isVisible": "0",
-                "alert": []
-            },
-            {
-                "eqType": "jMQTT",
-                "name": "Ventilateur_3-5",
-                "type": "action",
-                "subType": "other",
-                "isHistorized": "0",
-                "configuration": {
-                    "topic": "SUBmcz",
-                    "request": "39,5",
-                    "retain": "0",
-                    "autoPub": "0"
-                },
-                "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
-                },
-                "isVisible": "0",
                 "alert": []
             },
             {
@@ -1698,8 +1348,8 @@
                     "autoPub": "0"
                 },
                 "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
                 },
                 "isVisible": "1",
                 "alert": []
@@ -1717,8 +1367,8 @@
                     "autoPub": "0"
                 },
                 "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
                 },
                 "isVisible": "1",
                 "alert": []
@@ -1736,8 +1386,8 @@
                     "autoPub": "0"
                 },
                 "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
                 },
                 "isVisible": "1",
                 "alert": []
@@ -1755,10 +1405,417 @@
                     "autoPub": "0"
                 },
                 "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
                 },
                 "isVisible": "1",
+                "alert": []
+            },
+            {
+                "eqType": "jMQTT",
+                "name": "Temp_demandee_T1",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                "configuration": {
+                    "topic": "SUBmcz",
+                    "request": "42,cmd",
+                    "retain": "0",
+                    "autoPub": "0"
+                },
+                "template": {
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
+                },
+                "isVisible": "0",
+                "alert": []
+            },
+            {
+                "eqType": "jMQTT",
+                "name": "T Boiler",
+                "type": "info",
+                "subType": "string",
+                "isHistorized": "0",
+                "configuration": {
+                    "topic": "%s",
+                    "jsonPath": "['TEMP - Boiler']"
+                },
+                "template": {
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
+                },
+                "display": {
+                    "invertBinary": "0"
+                },
+                "isVisible": "0",
+                "alert": []
+            },
+            {
+                "eqType": "jMQTT",
+                "name": "PUBmcz",
+                "type": "info",
+                "subType": "string",
+                "isHistorized": "0",
+                "configuration": {
+                    "topic": "%s"
+                },
+                "template": {
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
+                },
+                "display": {
+                    "invertBinary": "0"
+                },
+                "isVisible": "0",
+                "alert": []
+            },
+            {
+                "eqType": "jMQTT",
+                "name": "T Sonde wifi 1",
+                "type": "info",
+                "subType": "string",
+                "isHistorized": "0",
+                "configuration": {
+                    "topic": "%s",
+                    "jsonPath": "['Sonde wifi temperature 1']"
+                },
+                "template": {
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
+                },
+                "display": {
+                    "invertBinary": "0"
+                },
+                "isVisible": "0",
+                "alert": []
+            },
+            {
+                "eqType": "jMQTT",
+                "name": "T Sonde wifi 2",
+                "type": "info",
+                "subType": "string",
+                "isHistorized": "0",
+                "configuration": {
+                    "topic": "%s",
+                    "jsonPath": "['Sonde wifi temperature 2']"
+                },
+                "template": {
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
+                },
+                "display": {
+                    "invertBinary": "0"
+                },
+                "isVisible": "0",
+                "alert": []
+            },
+            {
+                "eqType": "jMQTT",
+                "name": "T Sonde wifi 3",
+                "type": "info",
+                "subType": "string",
+                "isHistorized": "0",
+                "configuration": {
+                    "topic": "%s",
+                    "jsonPath": "['Sonde wifi temperature 3']"
+                },
+                "template": {
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
+                },
+                "display": {
+                    "invertBinary": "0"
+                },
+                "isVisible": "0",
+                "alert": []
+            },
+            {
+                "eqType": "jMQTT",
+                "name": "Set Puffer",
+                "type": "info",
+                "subType": "string",
+                "isHistorized": "0",
+                "configuration": {
+                    "topic": "%s",
+                    "jsonPath": "['Set Puffer']"
+                },
+                "template": {
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
+                },
+                "display": {
+                    "invertBinary": "0"
+                },
+                "isVisible": "0",
+                "alert": []
+            },
+            {
+                "eqType": "jMQTT",
+                "name": "Set Boiler",
+                "type": "info",
+                "subType": "string",
+                "isHistorized": "0",
+                "configuration": {
+                    "topic": "%s",
+                    "jsonPath": "['Set Boiler']"
+                },
+                "template": {
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
+                },
+                "display": {
+                    "invertBinary": "0"
+                },
+                "isVisible": "0",
+                "alert": []
+            },
+            {
+                "eqType": "jMQTT",
+                "name": "Set Health",
+                "type": "info",
+                "subType": "string",
+                "isHistorized": "0",
+                "configuration": {
+                    "topic": "%s",
+                    "jsonPath": "['Set Health']"
+                },
+                "template": {
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
+                },
+                "display": {
+                    "invertBinary": "0"
+                },
+                "isVisible": "0",
+                "alert": []
+            },
+            {
+                "eqType": "jMQTT",
+                "name": "T Retour",
+                "type": "info",
+                "subType": "string",
+                "isHistorized": "0",
+                "configuration": {
+                    "topic": "%s",
+                    "jsonPath": "['Temperature retour']"
+                },
+                "template": {
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
+                },
+                "display": {
+                    "invertBinary": "0"
+                },
+                "isVisible": "0",
+                "alert": []
+            },
+            {
+                "eqType": "jMQTT",
+                "name": "CmdPoele",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                "configuration": {
+                    "topic": "SUBmcz",
+                    "request": "#1020#",
+                    "retain": "0",
+                    "autoPub": "0"
+                },
+                "template": {
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
+                },
+                "isVisible": "0",
+                "alert": []
+            },
+            {
+                "eqType": "jMQTT",
+                "name": "Ventilateur_2-1",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                "configuration": {
+                    "topic": "SUBmcz",
+                    "request": "38,1",
+                    "retain": "0",
+                    "autoPub": "0"
+                },
+                "template": {
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
+                },
+                "isVisible": "0",
+                "alert": []
+            },
+            {
+                "eqType": "jMQTT",
+                "name": "Ventilateur_2-2",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                "configuration": {
+                    "topic": "SUBmcz",
+                    "request": "38,2",
+                    "retain": "0",
+                    "autoPub": "0"
+                },
+                "template": {
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
+                },
+                "isVisible": "0",
+                "alert": []
+            },
+            {
+                "eqType": "jMQTT",
+                "name": "Ventilateur_2-3",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                "configuration": {
+                    "topic": "SUBmcz",
+                    "request": "38,3",
+                    "retain": "0",
+                    "autoPub": "0"
+                },
+                "template": {
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
+                },
+                "isVisible": "0",
+                "alert": []
+            },
+            {
+                "eqType": "jMQTT",
+                "name": "Ventilateur_2-4",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                "configuration": {
+                    "topic": "SUBmcz",
+                    "request": "38,4",
+                    "retain": "0",
+                    "autoPub": "0"
+                },
+                "template": {
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
+                },
+                "isVisible": "0",
+                "alert": []
+            },
+            {
+                "eqType": "jMQTT",
+                "name": "Ventilateur_2-5",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                "configuration": {
+                    "topic": "SUBmcz",
+                    "request": "38,5",
+                    "retain": "0",
+                    "autoPub": "0"
+                },
+                "template": {
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
+                },
+                "isVisible": "0",
+                "alert": []
+            },
+            {
+                "eqType": "jMQTT",
+                "name": "Ventilateur_3-1",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                "configuration": {
+                    "topic": "SUBmcz",
+                    "request": "39,1",
+                    "retain": "0",
+                    "autoPub": "0"
+                },
+                "template": {
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
+                },
+                "isVisible": "0",
+                "alert": []
+            },
+            {
+                "eqType": "jMQTT",
+                "name": "Ventilateur_3-2",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                "configuration": {
+                    "topic": "SUBmcz",
+                    "request": "39,2",
+                    "retain": "0",
+                    "autoPub": "0"
+                },
+                "template": {
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
+                },
+                "isVisible": "0",
+                "alert": []
+            },
+            {
+                "eqType": "jMQTT",
+                "name": "Ventilateur_3-3",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                "configuration": {
+                    "topic": "SUBmcz",
+                    "request": "39,3",
+                    "retain": "0",
+                    "autoPub": "0"
+                },
+                "template": {
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
+                },
+                "isVisible": "0",
+                "alert": []
+            },
+            {
+                "eqType": "jMQTT",
+                "name": "Ventilateur_3-4",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                "configuration": {
+                    "topic": "SUBmcz",
+                    "request": "39,4",
+                    "retain": "0",
+                    "autoPub": "0"
+                },
+                "template": {
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
+                },
+                "isVisible": "0",
+                "alert": []
+            },
+            {
+                "eqType": "jMQTT",
+                "name": "Ventilateur_3-5",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                "configuration": {
+                    "topic": "SUBmcz",
+                    "request": "39,5",
+                    "retain": "0",
+                    "autoPub": "0"
+                },
+                "template": {
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
+                },
+                "isVisible": "0",
                 "alert": []
             },
             {
@@ -1774,13 +1831,50 @@
                     "autoPub": "0"
                 },
                 "template": {
-                    "dashboard": "default",
-                    "mobile": "default"
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
+                },
+                "isVisible": "0",
+                "alert": []
+            },
+            {
+                "eqType": "jMQTT",
+                "name": "T_Demandee_Poele",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                "configuration": {
+                    "topic": "SUBmcz",
+                    "request": "42,#1144#",
+                    "retain": "0",
+                    "autoPub": "0"
+                },
+                "template": {
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
+                },
+                "isVisible": "0",
+                "alert": []
+            },
+            {
+                "eqType": "jMQTT",
+                "name": "T_Demande_PoelePelets",
+                "type": "action",
+                "subType": "other",
+                "isHistorized": "0",
+                "configuration": {
+                    "topic": "SUBmcz",
+                    "request": "42,#1018#",
+                    "retain": "0",
+                    "autoPub": "0"
+                },
+                "template": {
+                    "dashboard": "core::default",
+                    "mobile": "core::default"
                 },
                 "isVisible": "0",
                 "alert": []
             }
-        ],
-        "logicalId": "%s\/#"
+        ]
     }
 }

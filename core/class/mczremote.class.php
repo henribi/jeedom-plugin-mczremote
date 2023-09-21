@@ -70,13 +70,13 @@ class mczremote extends eqLogic {
 			log::add('mczremote', 'error',"Le plugin jMQTT n'est pas installé (I01)");
 			throw new Exception("Le plugin jMQTT n'est pas installé (I01)");
 		}
-		if (!method_exists('jMQTT', 'templateSplitJsonPathByFile')) {
-			log::add('mczremote', 'error',"La version installée de jMQTT n'est pas assez récente (I02)");
-			throw new Exception("La version installée de jMQTT n'est pas assez récente (I02)");
-		}
+		//if (!method_exists('jMQTT', 'templateSplitJsonPathByFile')) {
+		//	log::add('mczremote', 'error',"La version installée de jMQTT n'est pas assez récente (I02)");
+		//	throw new Exception("La version installée de jMQTT n'est pas compatible (I02)");
+		//}
 		if (!method_exists('jMQTT', 'moveTopicToConfigurationByFile')) {
 			log::add('mczremote', 'error',"La version installée de jMQTT n'est pas assez récente (I03)");
-			throw new Exception("La version installée de jMQTT n'est pas assez récente (I03)");
+			throw new Exception("La version installée de jMQTT n'est pas compatible (I03)");
 		}
 		$jMQTTPathTemplate = $pathPlugin . '/data/template' . '/MCZRemote.json';
 		$MCZRemotePathTemplate = plugin::getPluginPath('mczremote') . '/data/template' . '/MCZRemote.json';
@@ -85,7 +85,7 @@ class mczremote extends eqLogic {
 			$result = copy($MCZRemotePathTemplate, $jMQTTPathTemplate );
 			if ($result) {
 				// Adapt template for the new jsonPath field
-				jMQTT::templateSplitJsonPathByFile('MCZRemote.json');
+				//////jMQTT::templateSplitJsonPathByFile('MCZRemote.json');
 				// Adapt template for the topic in configuration
 				jMQTT::moveTopicToConfigurationByFile('MCZRemote.json');
 				log::add('mczremote', 'debug', 'Installation du template dans jMQTT  OK');
@@ -120,13 +120,13 @@ class mczremote extends eqLogic {
 			throw new Exception("La version installée de jMQTT ne supporte pas cette fonction. (C02)");
 			$return = 1;				
 		}
-		if (!method_exists('jMQTT', 'templateSplitJsonPathByFile')) {
-			log::add('mczremote', 'error',"La version installée de jMQTT n'est pas assez récente. (C03)");
-			throw new Exception("La version installée de jMQTT n'est pas assez récente. (C03)");
-		}
+		//if (!method_exists('jMQTT', 'templateSplitJsonPathByFile')) {
+		//	log::add('mczremote', 'error',"La version installée de jMQTT n'est pas assez récente. (C03)");
+		//	throw new Exception("La version installée de jMQTT n'est pas compatible. (C03)");
+		//}
 		if (!method_exists('jMQTT', 'moveTopicToConfigurationByFile')) {
 			log::add('mczremote', 'error',"La version installée de jMQTT n'est pas assez récente. (C04)");
-			throw new Exception("La version installée de jMQTT n'est pas assez récente (C04)");
+			throw new Exception("La version installée de jMQTT n'est pas compatible (C04)");
 		}
 		$jMQTTPathTemplate = $pathPlugin . '/data/template' . '/MCZRemote.json';
 		$MCZRemotePathTemplate = plugin::getPluginPath('mczremote') . '/data/template' . '/MCZRemote.json';
@@ -135,7 +135,7 @@ class mczremote extends eqLogic {
 			$result = copy($MCZRemotePathTemplate, $jMQTTPathTemplate );
 			if ($result) {
 				// Adapt template for the new jsonPath field
-				jMQTT::templateSplitJsonPathByFile('MCZRemote.json');
+				/////jMQTT::templateSplitJsonPathByFile('MCZRemote.json');
 				// Adapt template for the topic in configuration
 				jMQTT::moveTopicToConfigurationByFile('MCZRemote.json');
 			} else {
