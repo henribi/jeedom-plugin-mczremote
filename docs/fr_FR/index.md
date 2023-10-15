@@ -30,13 +30,7 @@ Dans cette page, vous avez les boutons suivants:
 
 - Configuration: Donne l'accès à la configuration du plugin
 
-- Installer template dans jMQTT:  Permet de copier un template des commandes pour les poêles MCZ en Remote dans ***jMQTT***. L'utilisation du template est décrite dans une section spécifique.
-
-- Installer template & créer jMQTT équipement: Comme le bouton précédent, on copie le template dans jMQTT mais ensuite on crée directement l'équipement dans jMQTT. Vous devez indiquer le nom de l'équipement. Il vous reste à peaufiner la configuration de l'équipement et à terminer les commandes actions: Temp_demandee_T1  et CmdPoele. 
->
-> Cette procédure n'est exécutable qu'une seule fois. Si elle est relancée, un message d'erreur est affiché.
-> Il faut supprimer l'équipement dans jMQTT pour pouvoir en créer un nouveau.
-
+- Télécharger le template:  Le template MCZRemote.json est téléchargé sur votre ordinateur.
 
 - MCZ Démon: Permet de tester si le démon MCZ est toujours actif.
 
@@ -86,15 +80,19 @@ Dans cette zone, vous pouvez agir sur le démon.
 
 Un message éventuel dans cette zone indique un problème à corriger.
 
-# UTILISATION DU TEMPLATE
+# Création de votre poêle
 
-L'utilisation du template n'est actuellement disponible que via le plugin ***jMQTT***.
+Un template pour la création de votre poêle est disponible dans le plugin ***jMQTT***.
 
-Le template est visible dans jMQTT comme *(Perso)MCZRemote*. Celui-ci permet de créer facilement les commandes infos et actions dans jMQTT pour la gestion du poêle.
+Le template est visible dans jMQTT comme *MCZRemote*. Celui-ci permet de créer facilement les commandes infos et actions dans jMQTT pour la gestion du poêle.
 
-Dans jMQTT, utilisez le bouton + pour ajouter un équipement et donnez lui un nom.
+Dans jMQTT, utilisez le bouton + pour ajouter un équipement.
+![Create équipement](../images/createequipement.png)
 
-Cliquez ensuite sur le bouton *Appliquer template*.  Sélectionnez le template *(Perso)MCZRemote* et indiquez comme topic de base le *Topic PUB* renseigné dans la configuration du plugin MCZRemote. La valeur par défaut est *PUBmcz*.  Respectez les majuscules et minuscules.
+Spécifiez le broker à utiliser.  
+Donnez un nom à votre équipement. 
+Sélectionnez le template *MCZRemote*.
+Indiquez comme topic de base *PUBmcz*.  Respectez les majuscules et minuscules.
 
 Les commandes sont crées. Il vous reste à terminer la configuration de base de votre équipement et à le sauvegarder.
 

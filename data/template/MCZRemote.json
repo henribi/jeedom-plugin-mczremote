@@ -1617,7 +1617,7 @@
                 "isHistorized": "0",
                 "configuration": {
                     "topic": "SUBmcz",
-                    "request": "#1020#",
+                    "request": "#CMD#",
                     "retain": "0",
                     "autoPub": "0"
                 },
@@ -1845,7 +1845,7 @@
                 "isHistorized": "0",
                 "configuration": {
                     "topic": "SUBmcz",
-                    "request": "42,#1144#",
+                    "request": "42,#CMD#",
                     "retain": "0",
                     "autoPub": "0"
                 },
@@ -1864,7 +1864,7 @@
                 "isHistorized": "0",
                 "configuration": {
                     "topic": "SUBmcz",
-                    "request": "42,#1018#",
+                    "request": "42,#CMD#",
                     "retain": "0",
                     "autoPub": "0"
                 },
