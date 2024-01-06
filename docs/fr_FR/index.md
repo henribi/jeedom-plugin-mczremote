@@ -12,8 +12,10 @@ Ce plugin est prévu pour être installé sur le serveur Jeedom.
 >
 >> ***Attention***
 >>
->> Ce plugin n'est pas compatible avec les poêles qui utilisent l'application Maestro MCZ et le protocole Maestro+.
+>> Ce plugin n'est pas compatible avec les poêles qui utilisent l'application Maestro MCZ ou Maestro+ et le protocole Maestro+.
 >>
+>>
+>> ![Incompatibilité](../images/non_compatible.png)
 >>
 
 > **MQTT**

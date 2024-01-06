@@ -117,23 +117,34 @@ def send():
 def on_connect_mqtt(client, userdata, flags, rc):
     logging.info("Connecté au broker MQTT avec le code : " + str(rc))
 
+    time.sleep(2)
+    logging.info('Souscription au topic ' + str(globals.MQTT_TOPIC_SUB) + ' avec un Qos=1')
+    returnval = client.subscribe(globals.MQTT_TOPIC_SUB, qos=1)
+    logging.debug('Resultat souscription au topic ' + str(globals.MQTT_TOPIC_SUB) + ' : ' + str(returnval[0]))
+
 
 def on_message_mqtt(client, userdata, message):
-    logging.info('Message MQTT reçu : ' + str(message.payload.decode()))
-    cmd = message.payload.decode().split(",")
-    if (int(cmd[0])) < 9000:
-        if cmd[0] == "42":
-            cmd[1] = (int(cmd[1]))
-        Message_MQTT.empile("C|WriteParametri|" + cmd[0] + "|" + str(cmd[1]))
-        logging.info('Contenu Pile Message_MQTT : ' + str(Message_MQTT.copiepile()))
-        send()
-    else:
-        if cmd[0] == "9001":
-            order = "C|SalvaDataOra|"
-        Message_MQTT.empile(str(order) + str(cmd[1]))
-        logging.info('Contenu Pile Message_MQTT : ' + str(Message_MQTT.copiepile()))
-        send()
-    
+    try:
+        logging.info('Message MQTT reçu : ' + str(message.payload.decode()))
+        cmd = message.payload.decode().split(",")
+        if (int(cmd[0])) < 9000:
+            if cmd[0] == "42":
+                cmd[1] = (int(cmd[1]))
+            Message_MQTT.empile("C|WriteParametri|" + cmd[0] + "|" + str(cmd[1]))
+            logging.info('Contenu Pile Message_MQTT : ' + str(Message_MQTT.copiepile()))
+            send()
+        else:
+            if cmd[0] == "9001":
+                order = "C|SalvaDataOra|"
+            Message_MQTT.empile(str(order) + str(cmd[1]))
+            logging.info('Contenu Pile Message_MQTT : ' + str(Message_MQTT.copiepile()))
+            send()
+    except Exception as err:
+        logging.info('Exception caught %s', err)
+
+def on_subscribe_mqtt(client, userdata, mid, qos):
+    logging.info("Subscribed to mid: " + str(mid) + ": " + str(qos))
+
     
     
 def secTOdhms(nb_sec):
@@ -376,11 +387,12 @@ if globals.MQTT_authentication == True:
     client.username_pw_set(username=globals.MQTT_user, password=globals.MQTT_pass)
 client.on_connect = on_connect_mqtt
 client.on_message = on_message_mqtt
-client.connect(globals.MQTT_ip, globals.MQTT_port)
-client.loop_start()
-logging.info('Souscription au topic ' + str(globals.MQTT_TOPIC_SUB) + ' avec un Qos=1')
-client.subscribe(globals.MQTT_TOPIC_SUB, qos=1)
+client.on_subscribe = on_subscribe_mqtt
+#client.enable_logger()    # pour obtenir les messages de log de paho-mqtt 
+client.connect(globals.MQTT_ip, globals.MQTT_port, 60)
 
+client.loop_start()
+logging.debug('Boucle Loop_start executee')
 
 try:
     jeedom_utils.write_pid(str(globals.pidfile))

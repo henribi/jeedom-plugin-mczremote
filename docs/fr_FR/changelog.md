@@ -4,9 +4,10 @@
 >
 >Pour rappel s'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte
 
-# 15/10/2023
+# 06/01/2024
 - Suppression de la copie et de l'installation directe du template dans jMQTT
 - Ajout d'une fonction de téléchargement du template
+- Correction bug dans le démon
 
 # 21/09/2023
 - Correction d'une incompatibité entre MCZ Remote et jMQTT pour la copie et l'installation du template.
