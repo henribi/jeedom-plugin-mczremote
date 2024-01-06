@@ -15,7 +15,7 @@ Ce plugin est prévu pour être installé sur le serveur Jeedom.
 >> Ce plugin n'est pas compatible avec les poêles qui utilisent l'application Maestro MCZ ou Maestro+ et le protocole Maestro+.
 >>
 >>
->> ![Incompatibilité](../images/non_compatible.png)
+>> ![Incompatibilité](../../images/non_compatible.png)
 >>
 
 > **MQTT**
@@ -26,7 +26,7 @@ Ce plugin est prévu pour être installé sur le serveur Jeedom.
 
 # GESTION
 
-![Gestion](../images/gestion.png)
+![Gestion](../../images/gestion.png)
 
 Dans cette page, vous avez les boutons suivants:
 
@@ -41,7 +41,7 @@ Dans cette page, vous avez les boutons suivants:
 
 ## La configuration en quelques clics
 
-![Configuration générale](../images/configuration.png)
+![Configuration générale](../../images/configuration.png)
 
 Dans cette page de configuration, outre les informations habituelles pour un équipement, vous avez la zone de configuration pour indiquer les paramètres de fonctionnement et de connexion.
 
@@ -89,7 +89,7 @@ Un template pour la création de votre poêle est disponible dans le plugin ***j
 Le template est visible dans jMQTT comme *MCZRemote*. Celui-ci permet de créer facilement les commandes infos et actions dans jMQTT pour la gestion du poêle.
 
 Dans jMQTT, utilisez le bouton + pour ajouter un équipement.
-![Create équipement](../images/createequipement.png)
+![Create équipement](../../images/createequipement.png)
 
 Spécifiez le broker à utiliser.  
 Donnez un nom à votre équipement. 
@@ -108,14 +108,14 @@ Les commandes sont crées. Il vous reste à terminer la configuration de base de
 >> Exemple:
 >> J’ai un équipement thermostat [chauffage][Poele_Pellets] qui permet d’envoyer la consigne de température.
 >> Dans cet équipement, j’ai un slider dont le résultat est disponible via une commande info
->> ![Commande source](../images/cmdsource.png)
+>> ![Commande source](../../images/cmdsource.png)
 >>
 >> Le nom complet de cette commande est #[Chauffage][Poele_Pellets][T_demandee]#
 >>
 >> Dans l’équipement PUBmcz, j’ai une commande action *T_Demandee_PoelePellets* pour envoyer la demande au poele.
 >> Dans la partie valeur, j’ai remplacé le CMD de « 42,CMD » par la commande donnée plus haut: #[Chauffage][Poele_Pellets][T_demandee]#
 >>
->> ![Commande destination](../images/cmddest.png)
+>> ![Commande destination](../../images/cmddest.png)
 >>
 >> Si vous avez plusieurs sources de définition de température, il faut définir pour chacune d’elle une commande action dans l’équipement PUBmcz et effectuer une configuration du même genre.
 >>
@@ -224,6 +224,4 @@ Ce plugin est largement inspiré des travaux de Anthony, EtienneME et Pipolas su
 Git original: <https://github.com/Anthony-55/maestro>  
 
 Ce plugin a été créé pour aider, je ne souhaite en aucun cas m'approprier le code du script python qui n'est pas le mien, et sans lequel ce plugin n'existerait pas.
-
-
 
