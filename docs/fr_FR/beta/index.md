@@ -1,6 +1,6 @@
 # Plugin mczremote
 
-Ce plugin permet de dialoguer avec un poêle à pellets de la gamme MCZ Maestro via les serveurs de MCZ.
+Ce plugin permet de dialoguer avec un poêle à pellets de la gamme MCZ Maestro via les serveurs de MCZ. Certains poêles de la marque Brisach sont également supportés.
 
 Les informations et actions sont présentées ou transmises via MQTT.
 
@@ -8,11 +8,13 @@ Ce plugin est prévu pour être installé sur le serveur Jeedom.
 
 > **Prérequis**
 >
->Votre poêle doit être connecté au wifi de votre domicile. Il doit pouvoir être contrôlé par l'application MCZ Maestro à partir de votre smartphone en 4G ou hors de votre domicile.
+>Votre poêle doit être connecté au wifi de votre domicile. Il doit pouvoir être contrôlé par l'application MCZ Maestro ou Brisach+ à partir de votre smartphone en 4G ou hors de votre domicile.
 >
 >> ***Attention***
 >>
 >> Ce plugin n'est pas compatible avec les poêles qui utilisent l'application Maestro MCZ ou Maestro+ et le protocole Maestro+.
+>>
+>> Seule l'application Brisach+ est compatible avec ce plugin
 >>
 >>
 >> ![Incompatibilité](../../images/non_compatible.png)
