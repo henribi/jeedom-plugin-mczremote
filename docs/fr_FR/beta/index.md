@@ -14,7 +14,7 @@ Ce plugin est prévu pour être installé sur le serveur Jeedom.
 >>
 >> Ce plugin n'est pas compatible avec les poêles qui utilisent l'application Maestro MCZ ou Maestro+ et le protocole Maestro+.
 >>
->> Seule l'application Brisach+ est compatible avec ce plugin
+>> Seuls les poêles Brisach qui utilisent l'application Brisach+ sont compatibles avec ce plugin
 >>
 >>
 >> ![Incompatibilité](../../images/non_compatible.png)
