@@ -16,12 +16,6 @@ $eqLogics = eqLogic::byType($plugin->getId());
                 <br>
                 <span>{{Configuration}}</span>
             </div>
-            <div class="cursor eqLogicAction logoSecondary" id="bt_DownloadTemplate">
-                <i class="fas fa-cloud-download-alt"></i>
-                <br>
-                <span>{{Télécharger le template}}</span>
-            </div>
-<!----
             <div class="cursor eqLogicAction logoSecondary" id="bt_InstallTemplate">
                 <i class="fas fa-file-export"></i>
                 <br>
@@ -32,7 +26,6 @@ $eqLogics = eqLogic::byType($plugin->getId());
                 <br>
                 <span>{{Installer template & créer jMQTT equipment}}</span>
             </div>
---->
             <div class="cursor eqLogicAction logoSecondary" id="bt_healthmczremote">
                 <i class="fas fa-hands-helping"></i>
                 <br>

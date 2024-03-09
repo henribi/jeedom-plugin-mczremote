@@ -1,7 +1,7 @@
 {
 	"id" : "mczremote",
 	"name" : "MCZ Remote",
-	"description" : "Dialogue avec les poêle à pellets MCZ de la gamme Maestro et certains poêle Brisach via connexion remote.",
+	"description" : "Dialogue avec les poêle à pellets MCZ de la gamme Maestro via connexion remote",
 	"licence" : "AGPL",
 	"author" : "henribi",
 	"require" : "4.1",
@@ -11,8 +11,8 @@
 	"maxDependancyInstallTime" : 0,
 	"changelog" : "https:\/\/henribi.github.io\/jeedom-plugin-mczremote\/#language#\/changelog",
 	"documentation" : "https:\/\/henribi.github.io\/jeedom-plugin-mczremote\/#language#\/",
-	"changelog_beta" : "https:\/\/henribi.github.io\/jeedom-plugin-mczremote\/#language#\/changelog_beta.html",
-	"documentation_beta" : "https:\/\/henribi.github.io\/jeedom-plugin-mczremote\/#language#\/index_beta.html",
+	"changelog_beta" : "https:\/\/henribi.github.io\/jeedom-plugin-mczremote\/#language#\/changelog",
+	"documentation_beta" : "https:\/\/henribi.github.io\/jeedom-plugin-mczremote\/#language#\/",
 	"language" : ["fr_FR"],
 		"compatibility" : [
 		"smart",
@@ -20,7 +20,6 @@
 		"docker",
 		"diy",
 		"v4",
-		"atlas",
-		"luna"
+		"atlas"
 	]
 }
