@@ -15,6 +15,11 @@
  * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
  */
 
+$('#bt_DownloadTemplate').off('click').on('click', function() {
+ window.open('core/php/downloadFile.php?pathfile=' + 'plugins/mczremote/data/template/MCZRemote.json', "_blank", null)
+});
+
+
 $('#bt_InstallTemplate').off('click').on('click', function() {
   $.ajax({
     type: "POST",

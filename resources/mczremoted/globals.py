@@ -1,5 +1,5 @@
 import time
-DAEMON_VERSION = '0.2'
+DAEMON_VERSION = '0.3'
 JEEDOM_COM = ''
 START_TIME = int(time.time())
 log_level = 'error'

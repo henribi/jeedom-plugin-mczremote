@@ -4,6 +4,10 @@
 >
 >Pour rappel s'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte
 
+# 08/03/2024
+- Migration vers un environnement python venv pour support Jeedom 4.4.x et Debian Bookworm
+Cette version nécessite la réinstallation des dépendances
+
 # 08/01/2024
 - Ajout de la référence à certains poêle Brisach
 

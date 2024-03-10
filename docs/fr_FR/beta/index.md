@@ -6,6 +6,8 @@ Les informations et actions sont présentées ou transmises via MQTT.
 
 Ce plugin est prévu pour être installé sur le serveur Jeedom.
 
+Cette version supporte l'environnement python venv pour fonctionner avec Jeedom 4.4 et Debian Bookworm
+
 > **Prérequis**
 >
 >Votre poêle doit être connecté au wifi de votre domicile. Il doit pouvoir être contrôlé par l'application MCZ Maestro ou Brisach+ à partir de votre smartphone en 4G ou hors de votre domicile.
