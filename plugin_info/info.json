@@ -1,7 +1,7 @@
 {
 	"id" : "mczremote",
 	"name" : "MCZ Remote",
-	"description" : "Dialogue avec les poêle à pellets MCZ de la gamme Maestro et certains poêle Brisach via connexion remote.",
+	"description" : "Dialogue avec les poêle à pellets MCZ de la gamme Maestro et certains poêles Brisach via connexion remote.",
 	"licence" : "AGPL",
 	"author" : "henribi",
 	"require" : "4.1",

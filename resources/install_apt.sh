@@ -1,101 +1,35 @@
 #!/bin/bash
+######################### INCLUSION LIB ##########################
+BASEDIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+#wget https://raw.githubusercontent.com/NebzHB/dependance.lib/master/dependance.lib -O $BASEDIR/dependance.lib &>/dev/null
+PROGRESS_FILENAME=dependancy
+PLUGIN=$(basename "$(realpath $BASEDIR/..)")
+LANG_DEP=en
+. ${BASEDIR}/dependance.lib
+##################################################################
 
-# This file is part of Plugin mczremote for jeedom.
+pre
+step 0 "Checking parameters"
 
-#set -x  # make sure each command is printed in the terminal
-PROGRESS_FILE=/tmp/dependency_mczremote_in_progress
-if [ ! -z "$1" ]; then
-    PROGRESS_FILE=$1
+LOCAL_VERSION="????"
+if [ -n $2 ]; then
+	LOCAL_VERSION=$2
 fi
-touch "${PROGRESS_FILE}"
 
-echo 0 > "${PROGRESS_FILE}"
-echo "****************    install_apt.sh      ****************"
-echo "********************************************************"
-echo "*             Installation des dépendances             *"
-echo "********************************************************"
+echo "== System: "`uname -a`
+echo "== Jeedom version: "`cat ${BASEDIR}/../../../core/config/version`
+echo "== MczRemote version: "${LOCAL_VERSION}
 
-echo 5 > "${PROGRESS_FILE}"
-echo "********************************************************"
-echo "*        Update package lists from repositories        *"
-echo "********************************************************"
-case $( uname -s ) in
-Linux)
-  echo "Kernel name: Linux"
-  case $( uname -m ) in
-  armv6l|armv7l)
-    echo "Machine Hardware name: $(uname -m)";;
-  x86_64)
-    echo "Machine Hardware name: x86_64";;
-  aarch64)
-    echo "Machine Hardware name: aarch64";;
-  i686)
-    echo "Machine Hardware name: i686";;
-  *)
-    echo other;;
-  esac;;
-*)
-  echo other;;
-esac
-sudo apt-get update
+step 10 "Synchronize the package index"
+try sudo apt-get update
 
-echo 20 > "${PROGRESS_FILE}"
-echo "********************************************************"
-echo "*         Install Python3 and dependencies             *"
-echo "********************************************************"
-sudo apt-get install -y python3 python3-pip
+step 20 "Install python3 venv and pip debian packages"
+try sudo DEBIAN_FRONTEND=noninteractive apt-get install -y python3-venv python3-pip
 
-echo 30 > "${PROGRESS_FILE}"
-echo "********************************************************"
-echo "*         Update version of python module six          *"
-echo "********************************************************"
-pip3 install --upgrade six
+step 30 "Create a python3 Virtual Environment"
+try sudo -u www-data python3 -m venv $BASEDIR/mczremoted/venv
 
+step 40 "Install required python3 libraries in venv"
+try sudo -u www-data $BASEDIR/mczremoted/venv/bin/pip3 install --no-cache-dir -r $BASEDIR/python-requirements/requirements.txt
 
-echo 40 > "${PROGRESS_FILE}"
-echo "********************************************************"
-echo "*             Python3 'requests' module                *"
-echo "********************************************************"
-pip3 install requests
-
-echo 50 > "${PROGRESS_FILE}"
-echo "********************************************************"
-echo "*              Python3 'pyudev' module                 *"
-echo "********************************************************"
-pip3 install pyudev
-
-echo 55 > "${PROGRESS_FILE}"
-echo "********************************************************"
-echo "*              Python3 'paho-mqtt' module              *"
-echo "********************************************************"
-pip3 install paho-mqtt
-
-echo 60 > "${PROGRESS_FILE}"
-echo "********************************************************"
-echo "*              Python3 'websocket-client' mo           *"
-echo "********************************************************"
-pip3 install websocket-client
-
-echo 70 > "${PROGRESS_FILE}"
-echo "********************************************************"
-echo "*              Python3 'python-socketio' module        *"
-echo "********************************************************"
-pip3 install python-socketio==4.6.1
-
-echo 80 > "${PROGRESS_FILE}"
-echo "********************************************************"
-echo "*              Python3 'pytho-engineio' mod            *"
-echo "********************************************************"
-pip3 install python-engineio==3.14.2
-
-
-echo 90 > "${PROGRESS_FILE}"
-echo "********************************************************"
-echo "*            Post-Installation cleaning                *"
-echo "********************************************************"
-
-echo 100 > "${PROGRESS_FILE}"
-echo "********************************************************"
-echo "*             Installation terminée                    *"
-echo "********************************************************"
-rm "${PROGRESS_FILE}"
+post

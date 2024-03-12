@@ -23,6 +23,11 @@ require_once __DIR__  . '/../../../../core/php/core.inc.php';
 /* error_reporting(-1); */
 
 class mczremote extends eqLogic {
+
+	const CLIENT_OK                     = 'ok';
+	const CLIENT_POK                    = 'pok';
+	const CLIENT_NOK                    = 'nok';
+	
     /*     * *************************Attributs****************************** */
     public static $_encryptConfigKey = array('MQTTuser', 'MQTTpwd', 'DevSerial', 'DevMac');
 
@@ -31,26 +36,46 @@ class mczremote extends eqLogic {
     /*     * ***********************Methode static*************************** */
 
 	public static function dependancy_info() {
-        $return = array();
-		$return['log'] = 'mczremote_update';
-		$return['progress_file'] = jeedom::getTmpFolder('mczremote') . '/dependency';
-                $return['state'] = 'ok';
+		$depLogFile = __CLASS__ . '_dep';
+		$depProgressFile = jeedom::getTmpFolder(__CLASS__) . '/dependancy';
 
-		if (exec(system::getCmdSudo() . system::get('cmd_check') . '-E "|python3\-requests|python3\-pyudev" | wc -l') < 2) {
-			$return['state'] = 'nok';
+        $return = array();
+		$return['log'] = log::getPathToLog($depLogFile);
+		$return['progress_file'] = $depProgressFile;
+                $return['state'] = self::CLIENT_OK;
+
+		if (file_exists($depProgressFile)) {
+			log::add(__CLASS__,'debug', sprintf(__("Dépendances en cours d'installation... (%s%%)", __FILE__), trim(file_get_contents($depProgressFile))));
+			$return['state'] = self::CLIENT_NOK;
+			return $return;
 		}
-		if (exec(system::getCmdSudo() . 'pip3 list | grep -E "pyudev|requests" | wc -l') < 2) {
-			$return['state'] = 'nok';
+
+		if (!file_exists(__DIR__ . '/../../resources/mczremoted/venv/bin/pip3') || !file_exists(__DIR__ . '/../../resources/mczremoted/venv/bin/python3')) {
+			log::add(__CLASS__,'debug', __("Relancez les dépendances, le venv Python n'a pas encore été créé", __FILE__));
+			$return['state'] = self::CLIENT_NOK;
+		} else {
+			exec(__DIR__ . '/../../resources/mczremoted/venv/bin/pip3 freeze --no-cache-dir -r '.__DIR__ . '/../../resources/python-requirements/requirements.txt 2>&1 >/dev/null', $output);
+			if (count($output) > 0) {
+				log::add(__CLASS__,'error', __('Relancez les dépendances, au moins une bibliothèque Python requise est manquante dans le venv :', __FILE__).' <br />'.implode('<br />', $output));
+				$return['state'] = self::CLIENT_NOK;
+			}
 		}
-		if (exec(system::getCmdSudo() . 'pip3 list | grep -E "python-socketio[ ]*4.6.1|python-engineio[ ]*3.14.2" | wc -l') < 2) {
-			$return['state'] = 'nok';
-		}
+		if ($return['state'] == self::CLIENT_OK)
+			log::add(__CLASS__,'debug', sprintf(__('Dépendances installées.', __FILE__)));
 		return $return;
     }
 
 	public static function dependancy_install() {
-		log::remove(__CLASS__ . '_update');
-		return array('script' => dirname(__FILE__) . '/../../resources/install_#stype#.sh ' . jeedom::getTmpFolder('mczremote') . '/dependency', 'log' => log::getPathToLog(__CLASS__ . '_update'));
+		$depLogFile = __CLASS__ . '_dep';
+		$depProgressFile = jeedom::getTmpFolder(__CLASS__) . '/dependancy';
+
+		log::add(__CLASS__,'info', sprintf(__('Installation des dépendances, voir log dédié (%s)', __FILE__), $depLogFile));
+		log::remove($depLogFile);
+		return array(
+			'script' => __DIR__ . '/../../resources/install_#stype#.sh ' . $depProgressFile,
+			'log' => log::getPathToLog($depLogFile)
+		);
+
 	}
 
 	public static function installTemplate() {
@@ -214,10 +239,10 @@ class mczremote extends eqLogic {
 			$return['launchable'] = 'nok';
 			$return['launchable_message'] = __('L\'information Device Serial n\'est pas configurée', __FILE__);
 		}
-		if (exec(system::getCmdSudo() . 'pip3 list | grep -E "python-socketio[ ]*4.6.1|python-engineio[ ]*3.14.2" | wc -l') < 2) {
-			$return['launchable'] = 'nok';
-			$return['launchable_message'] = __('Relancer la mise à jour des dépendances', __FILE__);
-		}
+		//if (exec(system::getCmdSudo() . 'pip3 list | grep -E "python-socketio[ ]*4.6.1|python-engineio[ ]*3.14.2" | wc -l') < 2) {
+		//	$return['launchable'] = 'nok';
+		//	$return['launchable_message'] = __('Relancer la mise à jour des dépendances', __FILE__);
+		//}
 
 		return $return;
 	}
@@ -231,7 +256,7 @@ class mczremote extends eqLogic {
 
 		$mczremote_path = realpath(dirname(__FILE__) . '/../../resources/mczremoted');
 		log::add('mczremote', 'debug', 'path:' . $mczremote_path);
-		$cmd = '/usr/bin/python3 ' . $mczremote_path . '/mczremoted.py';
+		$cmd = $mczremote_path.'/venv/bin/python3 ' . $mczremote_path . '/mczremoted.py';
 		$cmd .= ' --loglevel ' . log::convertLogLevel(log::getLogLevel('mczremote'));
 		$cmd .= ' --mqttip ' . config::byKey('MQTTip', __CLASS__);
 		$cmd .= ' --mqttport ' . config::byKey('MQTTport', __CLASS__);
