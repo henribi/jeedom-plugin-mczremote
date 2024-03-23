@@ -6,7 +6,7 @@
 
 # 12/03/2024
 - Migration vers un environnement python venv pour support Jeedom 4.4.x et Debian 12 Bookworm
-Cette version nécessite la réinstallation des dépendances
+  Cette version nécessite la réinstallation des dépendances
 
 # 08/01/2024
 - Ajout de la référence à certains poêle Brisach
