@@ -14,14 +14,6 @@
 	"changelog_beta" : "https:\/\/henribi.github.io\/jeedom-plugin-mczremote\/#language#\/changelog_beta.html",
 	"documentation_beta" : "https:\/\/henribi.github.io\/jeedom-plugin-mczremote\/#language#\/index_beta.html",
 	"language" : ["fr_FR"],
-		"compatibility" : [
-		"smart",
-		"rpi",
-		"docker",
-		"diy",
-		"v4",
-		"atlas",
-		"luna"
-	],
-	"pluginVersion" : "2.0"
+	"compatibility" : ["diy","docker","rpi","smart","atlas","luna","v4"],
+	"pluginVersion" : "2.0.1"
 }

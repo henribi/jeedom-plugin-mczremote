@@ -21,6 +21,10 @@ if (!isConnect()) {
     include_file('desktop', '404', 'php');
     die();
 }
+
+//require_once __DIR__ . '/../core/class/mczremote.class.php';
+sendVarToJS('version', config::byKey('version', 'mczremote', 'unknown', true));
+
 ?>
 <form class="form-horizontal">
     <fieldset>
@@ -94,4 +98,4 @@ if (!isConnect()) {
         </div>
   </fieldset>
 </form>
-
+<?php include_file('desktop', 'mczremote.config', 'js', 'mczremote'); ?>
