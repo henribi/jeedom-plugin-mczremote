@@ -143,3 +143,11 @@ function addCmdToTable(_cmd) {
     jeedom.cmd.changeType($('#table_cmd tbody tr:last'), init(_cmd.subType));
 }
 
+
+$(document).ready(function() {
+    // Display the real version number (X.Y.Z) just before the plugin version number (YYYY-MM-DD hh:mm:ss)
+    var dateVersion = $("#span_plugin_install_date").html();
+    $("#span_plugin_install_date").empty().append("v" + version + " (" + dateVersion + ")");
+
+});
+

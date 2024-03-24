@@ -25,7 +25,6 @@ const TOPICSUB = 'SUBmcz';
 const URLMCZ = 'http://app.mcz.it:9000';
 
 function mczremote_install() {
-
     config::save('UrlMCZ', URLMCZ, 'mczremote');
     config::save('socketport', SOCKETPORT, 'mczremote');
     config::save('MQTTport', MQTTPORT, 'mczremote');
@@ -34,8 +33,29 @@ function mczremote_install() {
 }
 
 function mczremote_update() {
+    // if version info is not in DB, it means it is a fresh install of mczremote
+    // (even if plugin is disabled the config key stays)
+    try {
+        $content = file_get_contents(__DIR__ . '/info.json');
+        $info = json_decode($content, true);
+        $pluginVer = $info['pluginVersion'];
+    } catch (Throwable $e) {
+        log::add(
+            "mczremote",
+            'warning',
+            __("Impossible de récupérer le numéro de version dans le fichier info.json, ceci ce devrait pas arriver !", __FILE__)
+        );
+        $pluginVer = '0.0.0';
+    }
 
-    
+    // Backup old version number
+    $currentVer = config::byKey('version', 'mczremote', $pluginVer);
+    // @phpstan-ignore-next-line
+    $currentVer = is_int($currentVer) ? strval($currentVer) . '.0.0' : $currentVer;
+    config::save('previousVersion', $currentVer, 'mczremote');
+
+    config::save('version', $pluginVer, 'mczremote');
+
 }
 
 
