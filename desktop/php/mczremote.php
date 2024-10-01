@@ -19,7 +19,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
             <div class="cursor eqLogicAction logoSecondary" id="bt_DownloadTemplate">
                 <i class="fas fa-cloud-download-alt"></i>
                 <br>
-                <span>{{Télécharger le template}}</span>
+                <span>{{Télécharger le template pour jMQTT}}</span>
             </div>
             <div class="cursor eqLogicAction logoSecondary" id="bt_CopyTemplateMQTT2">
                 <i class="fas fa-file-export"></i>

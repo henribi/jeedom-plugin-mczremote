@@ -19,7 +19,7 @@ $('#bt_DownloadTemplate').off('click').on('click', function() {
  window.open('core/php/downloadFile.php?pathfile=' + 'plugins/mczremote/data/template/MCZRemote.json', "_blank", null)
 });
 
-$('#bt_CopyTemplateMqtt2').off('click').on('click', function() {
+$('#bt_CopyTemplateMQTT2').off('click').on('click', function() {
   $.ajax({
     type: "POST",
     url: "plugins/mczremote/core/ajax/mczremote.ajax.php",
