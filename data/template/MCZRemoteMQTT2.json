@@ -1,0 +1,748 @@
+{
+    "name" : "MCZ Remote",
+    "commands" : [
+        {
+            "name": "Annee",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "Annee du poele"
+        },{
+            "name": "Mois",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "Mois du poele (1-12)"
+        },{
+            "name": "Jour",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "Jour du poele (1-31)"
+        },{
+            "name": "Heure",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "Heure du poele (0-23)"
+        },{
+            "name": "Minutes",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "Minutes du poele (0-29)"
+        },{
+            "name": "Ventilateur 3",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "logicalId" : "Etat du ventilateur canalise 2"
+        },{
+            "name": "Etat",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "Etat du poele"
+        },{
+            "name": "Profil",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "Profil"
+        },{
+            "name": "Puissance active",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "Puissance active"
+        },{
+            "name": "T Puffer",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "logicalId" : "Puffer Temperature"
+        },{
+            "name": "Ventilateur 1",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "Etat du ventilateur ambiance"
+        },{
+            "name": "Ventilateur 2",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "Etat du ventilateur canalise 1"
+        },{
+            "name": "Eco",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "Mode ECO"
+        },{
+            "name": "Antigel",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "Antigel"
+        },{
+            "name": "Delai_extinction",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "Minutes avant extinction"
+        },{
+            "name": "T Chaudiere",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "logicalId" : "Temperature chaudiere"
+        },{
+            "name": "Etat_sons",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "Etat effets sonores"
+        },{
+            "name": "Ete_Hiver",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "[Mode]"
+        },{
+            "name": "Heures_entretien",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "Heures avant entretien"
+        },{
+            "name": "Heures_P1",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "Heures de fonctionnement en puissance 1 (s)"
+        },{
+            "name": "T NTC3",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "logicalId" : "Temperature NTC3"
+        },{
+            "name": "Heures_P2",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "Heures de fonctionnement en puissance 2 (s)"
+        },{
+            "name": "Heures_P3",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "Heures de fonctionnement en puissance 3 (s)"
+        },{
+            "name": "Heures_P4",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "Heures de fonctionnement en puissance 4 (s)"
+        },{
+            "name": "Heures_P5",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "Heures de fonctionnement en puissance 5 (s)"
+        },{
+            "name": "Active-Set",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "logicalId" : "ACTIVE - Set"
+        },{
+            "name": "Heures_total",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "Heures de fonctionnement total (s)"
+        },{
+            "name": "Mode Regulation",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "Mode de regulation"
+        },{
+            "name": "Silence",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "Silence"
+        },{
+            "name": "Nbre_allumages",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "Nombre d'allumages"
+        },{
+            "name": "Sleep",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "Sleep"
+        },{
+            "name": "RPM-Ventilateur Fumees",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "RPM - Ventilateur fummees"
+        },{
+            "name": "Sonde_Pellets",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "Sonde Pellets"
+        },{
+            "name": "Sons",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "Effet sonore"
+        },{
+            "name": "T Ambiante",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "Temperature ambiante"
+        },{
+            "name": "Consigne",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "TEMP - Consigne"
+        },{
+            "name": "Chronothermostato",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "Mode Chronotermostato"
+        },{
+            "name": "RPM-Vis sans fin Set",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "logicalId" : "RPM - Vis sans fin - SET"
+        },{
+            "name": "Etat Bougie",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "Etat de la bougie"
+        },{
+            "name": "T Carte mere",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "TEMP - Carte mere"
+        },{
+            "name": "RPM-Vis sans fin Live",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "logicalId" : "RPM - Vis sans fin - LIVE"
+        },{
+            "name": "T Fumees",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "Temperature des fumees"
+        },{
+            "name": "Brazero",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "logicalId" : "Brazero"
+        },{
+            "name": "Etat mode Active",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "logicalId" : "Etat du mode Active"
+        },{
+            "name": "T Boiler",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "logicalId" : "TEMP - Boiler"
+        },{
+            "name": "T Sonde wifi 1",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "logicalId" : "Sonde wifi temperature 1"
+        },{
+            "name": "T Sonde wifi 2",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "logicalId" : "Sonde wifi temperature 2"
+        },{
+            "name": "T Sonde wifi 3",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "logicalId" : "Sonde wifi temperature 3"
+        },{
+            "name": "Set Puffer",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "logicalId" : "Set Puffer"
+        },{
+            "name": "Set Boiler",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "logicalId" : "Set Boiler"
+        },{
+            "name": "Set Health",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "logicalId" : "Set Health"
+        },{
+            "name": "T Retour",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "logicalId" : "Temperature retour"
+        },{
+            "name": "",
+            "type": "info",
+            "subtype": "string",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : ""
+        },{
+            "name": "ECO On",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"41,1"
+            }
+        },{
+            "name": "ECO Off",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"41,0"
+            }
+        },{
+            "name": "Profil_Confort",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"149,3"
+            }
+        },{
+            "name": "On",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"34,1"
+            }
+        },
+       {
+            "name": "Off",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"34,40"
+            }
+        },{
+            "name": "Profil_Manuel",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"149,0"
+            }
+        },{
+            "name": "Chrono On",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"1111,1"
+            }
+        },{
+            "name": "Chrono Off",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"1111,0"
+            }
+        },{
+            "name": "ECO Off",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"41,0"
+            }
+        },{
+            "name": "Mode Ete",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"58,1"
+            }
+        },{
+            "name": "Mode Hiver",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"58,0"
+            }
+        },{
+            "name": "Son On",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"50,1"
+            }
+        },{
+            "name": "Son Off",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"50,0"
+            }
+        },{
+            "name": "Profil_Dynamique",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"149,1"
+            }
+        },{
+            "name": "Profil_Overnight",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"149,2"
+            }
+        },{
+            "name": "Ventilateur_1-1",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"37,1"
+            }
+        },{
+            "name": "Ventilateur_1-2",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"37,2"
+            }
+        },{
+            "name": "Ventilateur_1-3",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"37,3"
+            }
+        },{
+            "name": "Ventilateur_1-4",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"37,4"
+            }
+        },{
+            "name": "Ventilateur_1-5",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"37,5"
+            }
+        },{
+            "name": "Puissance_1",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"36,1"
+            }
+        },{
+            "name": "Puissance_2",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"36,2"
+            }
+        },{
+            "name": "Puissance_3",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"36,3"
+            }
+        },{
+            "name": "Puissance_4",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"36,4"
+            }
+        },{
+            "name": "Temp_demandee_T1",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"42,CMD"
+            }
+        },{
+            "name": "CmdPoele",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"#CMD#"
+            }
+        },{
+            "name": "Ventilateur_2-1",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"38,1"
+            }
+        },{
+            "name": "Ventilateur_2-2",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"38,2"
+            }
+        },{
+            "name": "Ventilateur_2-3",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"38,3"
+            }
+        },{
+            "name": "Ventilateur_2-4",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"38,4"
+            }
+        },{
+            "name": "Ventilateur_2-5",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"38,5"
+            }
+        },{
+            "name": "Ventilateur_3-1",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"39,1"
+            }
+        },{
+            "name": "Ventilateur_3-2",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"39,2"
+            }
+        },{
+            "name": "Ventilateur_3-3",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"39,3"
+            }
+        },{
+            "name": "Ventilateur_3-4",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"39,4"
+            }
+        },{
+            "name": "Ventilateur_3-5",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 0,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"39,5"
+            }
+        },{
+            "name": "Puissance_5 Power",
+            "type": "action",
+            "subtype": "other",
+            "isVisible": 1,
+            "isHistorized": 0,
+            "logicalId" : "SUBmcz",
+            "configuration":{
+                "message":"36,5"
+            }
+        }
+    ]
+}

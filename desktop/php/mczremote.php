@@ -21,6 +21,12 @@ $eqLogics = eqLogic::byType($plugin->getId());
                 <br>
                 <span>{{Télécharger le template}}</span>
             </div>
+            <div class="cursor eqLogicAction logoSecondary" id="bt_CopyTemplateMQTT2">
+                <i class="fas fa-file-export"></i>
+                <br>
+                <span>{{Installer template dans MQTT manager}}</span>
+            </div>
+
 <!----
             <div class="cursor eqLogicAction logoSecondary" id="bt_InstallTemplate">
                 <i class="fas fa-file-export"></i>

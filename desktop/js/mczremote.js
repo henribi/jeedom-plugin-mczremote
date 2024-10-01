@@ -19,6 +19,33 @@ $('#bt_DownloadTemplate').off('click').on('click', function() {
  window.open('core/php/downloadFile.php?pathfile=' + 'plugins/mczremote/data/template/MCZRemote.json', "_blank", null)
 });
 
+$('#bt_CopyTemplateMqtt2').off('click').on('click', function() {
+  $.ajax({
+    type: "POST",
+    url: "plugins/mczremote/core/ajax/mczremote.ajax.php",
+    data: {
+      action: "CopyTemplateMQTT2"
+    },
+    dataType: 'json',
+    error: function(request, status, error) {
+      handleAjaxError(request, status, error);
+    },
+    success: function(data) {
+      if (data.state != 'ok') {
+        $('#div_alert').showAlert({ message: data.result, level: 'danger' });
+        return;
+      } 
+      else {
+        //window.toastr.clear()
+        //$('.pluginDisplayCard[data-plugin_id=' + $('#span_plugin_id').text() + ']').click()
+        $('#div_alert').showAlert({message: '{{Copie réussie}}',level: 'success' });
+      }
+
+    }
+  });
+});
+
+
 
 $('#bt_InstallTemplate').off('click').on('click', function() {
   $.ajax({
@@ -73,7 +100,7 @@ $('#bt_CreateEqWithTemplate').off('click').on('click', function() {
                    $('#div_alert').showAlert({message: '{{Installation réussie}}',level: 'success' });
                  }
                }
-             });
+            });
         } 
     });
 });

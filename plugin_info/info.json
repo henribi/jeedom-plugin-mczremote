@@ -15,5 +15,5 @@
 	"documentation_beta" : "https:\/\/henribi.github.io\/jeedom-plugin-mczremote\/#language#\/index_beta.html",
 	"language" : ["fr_FR"],
 	"compatibility" : ["diy","docker","rpi","smart","atlas","luna","v4"],
-	"pluginVersion" : "2.0.1"
+	"pluginVersion" : "2.0.3"
 }

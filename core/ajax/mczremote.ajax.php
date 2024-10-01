@@ -26,6 +26,11 @@ try {
     
     ajax::init();
 
+    if (init('action') == 'CopyTemplateMQTT2') {
+        mczremote::copyTemplateMQTT2();
+        ajax::success();
+    }
+    
     if (init('action') == 'installTemplate') {
         mczremote::installTemplate();
         ajax::success();

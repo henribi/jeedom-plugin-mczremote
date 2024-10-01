@@ -78,6 +78,52 @@ class mczremote extends eqLogic {
 
 	}
 
+	public static function copyTemplateMQTT2() {
+		$found = 0;
+		log::add('mczremote', 'debug',"copyTemplateMQTT2");
+		$pluginList = plugin::listPlugin($_activateOnly = true, $_orderByCategory = false, $_translate = true, $_nameOnly = true);
+		if (is_array($pluginList)) {
+			foreach ($pluginList as $val) {
+				if ($val == 'mqtt2'){
+					$pathPlugin = plugin::getPluginPath($val);
+					$found = 1;
+					break;
+				}
+			}
+		}
+		if ($found == 0) {
+			log::add('mczremote', 'error',"Le plugin MQTT manager n'est pas installé (I01)");
+			throw new Exception("Le plugin MQTT manager n'est pas installé (I01)");
+		}
+		// png file
+		$MQTT2PathTemplate = $pathPlugin . '/core/config/devices/other' . '/MCZRemoteMQTT2.png';
+		$MCZRemotePathTemplate = plugin::getPluginPath('mczremote') . '/data/template' . '/MCZRemoteMQTT2.png';
+		//log::add('mczremote', 'debug', 'Path dest: ' . $MQTT2PathTemplate . '    Path source: ' . $MCZRemotePathTemplate);
+		if (file_exists( $MCZRemotePathTemplate)) {
+			$result = copy($MCZRemotePathTemplate, $MQTT2PathTemplate );
+			//if ($result) {
+			//	log::add('mczremote', 'debug', 'Copie du template png dans MQTT manager  OK');
+			//} else {
+			//	log::add('mczremote', 'warning', 'Copie du template png dans MQTT manager  NOK. (I05)');
+			//	throw new Exception("Copie du template png dans MQTT manager  NOK. (I04)");
+			//}			
+		}
+		// json file
+		$MQTT2PathTemplate = $pathPlugin . '/core/config/devices/other' . '/MCZRemoteMQTT2.json';
+		$MCZRemotePathTemplate = plugin::getPluginPath('mczremote') . '/data/template' . '/MCZRemoteMQTT2.json';
+		//log::add('mczremote', 'debug', 'Path dest: ' . $MQTT2PathTemplate . '    Path source: ' . $MCZRemotePathTemplate);
+		if (file_exists( $MCZRemotePathTemplate)) {
+			$result = copy($MCZRemotePathTemplate, $MQTT2PathTemplate );
+			if ($result) {
+				log::add('mczremote', 'debug', 'Copie du template dans MQTT manager  OK');
+			} else {
+				log::add('mczremote', 'warning', 'Copie du template dans MQTT manager  NOK. (I04)');
+				throw new Exception("Copie du template dans MQTT manager  NOK. (I04)");
+			}			
+		}
+	}
+
+
 	public static function installTemplate() {
 		$found = 0;
 		log::add('mczremote', 'debug',"installTemplate");
@@ -341,7 +387,11 @@ class mczremote extends eqLogic {
       }
      */
 
-
+	public static function backupExclude() {
+		return [
+			'resources/mczremoted/venv'
+		];
+	}
 
     /*     * *********************Méthodes d'instance************************* */
 
