@@ -6,7 +6,6 @@
 
 # 01/10/2024 (2.0.3)
 - Ajout d'un template pour MQTT manager (MQTT2) avec copie du template
-- no doc yet
 
 # 17/05/2024 (2.0.2)
 - exlusion python venv du backup

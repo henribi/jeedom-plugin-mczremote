@@ -25,7 +25,8 @@ Cette version supporte l'environnement python venv pour fonctionner avec Jeedom 
 > **MQTT**
 >
 > Vous devez disposer ou avoir préalablement installé un plugin MQTT connecté à un serveur MQTT. Généralement mosquitto.  
-> L'ensemble peut être installé via le plugin ***jMQTT***.
+> L'ensemble peut être installé via le plugin ***jMQTT***.   
+> ***MQTT manager*** peut également être utilisé.
 > 
 
 # GESTION
@@ -36,7 +37,9 @@ Dans cette page, vous avez les boutons suivants:
 
 - Configuration: Donne l'accès à la configuration du plugin
 
-- Télécharger le template:  Le template MCZRemote.json est téléchargé sur votre ordinateur.
+- Télécharger le template pour jMQTT:  Le template MCZRemote.json est téléchargé sur votre ordinateur. Il est destiné à jMQTT.
+
+- Copier le template dans MQTT manager. Le template est copié vers MQTT manager est copié et permet de créer les commandes à partir du template.
 
 - MCZ Démon: Permet de tester si le démon MCZ est toujours actif.
 
@@ -67,9 +70,22 @@ Cette zone permet l'introduction des informations pour votre poêle.
 
 - Utilisateur et Mot de passe:  Ces informations sont optionnelles. Il faut les indiquer si votre serveur MQTT nécessite un utilisateur et mot de passe pour se connecter.
 
-- Topic PUB:   Cette information est préremplie avec le topic de publication sur le serveur MQTT. Ne pas la changer si vous utilisez le template.
+- Topic PUB & Topic SUB     
+  Ces deux informations dépendent du plugin MQTT utilisé. 
 
-- Topic SUB:   Cette information est préremplie avec le topic de publication sur le serveur MQTT. Ne pas la changer si vous utilisez le template
+  #### - plugin jMQTT
+
+  - Topic PUB:   PUBmcz
+
+  - Topic SUB:   SUBmcz 
+
+  #### - plugin MQTT manager
+
+  - Topic PUB:   PUBmcz    
+
+  - Topic SUB:   PUBmcz/SUBmcz    
+
+
 
 ### Démon
 
@@ -87,6 +103,7 @@ Dans cette zone, vous pouvez agir sur le démon.
 Un message éventuel dans cette zone indique un problème à corriger.
 
 # Création de votre poêle
+#### - plugin jMQTT
 
 Un template pour la création de votre poêle est disponible dans le plugin ***jMQTT***.
 
@@ -102,12 +119,22 @@ Indiquez comme topic de base *PUBmcz*.  Respectez les majuscules et minuscules.
 
 Les commandes sont crées. Il vous reste à terminer la configuration de base de votre équipement et à le sauvegarder.
 
+#### - plugin MQTT manager
+
+Créez un nouvel équipement dans MQTT manager et configurez les informations de base. Sauvegarder le.
+
+Allez dans les commandes. Cliquez sur Templates.  Sélectionnez le template ***MCZ Remote*** et valider.
+
+Les commandes sont crées. Il vous reste à sauvergarder.
+
+#### Actions complémentaires
+
 > Commande action: Temp_demandee_T1  et CmdPoele
 >
-> Ces deux commandes doivent être finalisée pour transmettre une valeur vers jMQTT et le poêle.  
+> Ces deux commandes doivent être finalisée pour transmettre une valeur vers MQTT et le poêle.  
 > La valeur CMD doit être remplacée par une commande info d'un virtuel.  
 > Temp_demandee_T1 permet d'envoyer la température de consigne au poêle.  
-> CmdPoele permet elle d'envoyer n'importe quelle chaîne de caractères vers le poêle. Cette chaîne (xx,yyy) doit être composée de la commande (xx) et de sa valeur (yyy)
+> La commande CmdPoele permet d'envoyer n'importe quelle chaîne de caractères vers le poêle. Cette chaîne (xx,yyy) doit être composée de la commande (xx) et de sa valeur (yyy)
 >
 >> Exemple:
 >> J’ai un équipement thermostat [chauffage][Poele_Pellets] qui permet d’envoyer la consigne de température.
@@ -117,7 +144,8 @@ Les commandes sont crées. Il vous reste à terminer la configuration de base de
 >> Le nom complet de cette commande est #[Chauffage][Poele_Pellets][T_demandee]#
 >>
 >> Dans l’équipement PUBmcz, j’ai une commande action *T_Demandee_PoelePellets* pour envoyer la demande au poele.
->> Dans la partie valeur, j’ai remplacé le CMD de « 42,CMD » par la commande donnée plus haut: #[Chauffage][Poele_Pellets][T_demandee]#
+>> Dans la partie valeur, j’ai remplacé le CMD de « 42,CMD » par la commande donnée plus haut: #[Chauffage][Poele_Pellets][T_demandee]#    
+>> La commande devient 42,#[Chauffage][Poele_Pellets][T_demandee]#
 >>
 >> ![Commande destination](../../images/cmddest.png)
 >>
